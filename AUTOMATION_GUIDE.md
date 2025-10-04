@@ -28,6 +28,7 @@ All automation infrastructure is **complete and operational**:
 **Matrix Testing:** Python 3.11, 3.12, 3.13
 
 **Steps:**
+
 - Pre-commit hooks validation
 - Linting (Ruff)
 - Code formatting (Ruff format, Black)
@@ -38,17 +39,20 @@ All automation infrastructure is **complete and operational**:
 ### 2. Security Scanning (in CI workflow)
 
 **Automated Checks:**
+
 - `bandit` - Static security analysis
 - `pip-audit` - Dependency vulnerability scanning (fails on HIGH)
 - `deptry` - Unused/missing dependency detection
 
 ### 3. Release Workflow (`.github/workflows/release.yml`)
 
-**Triggers:** 
+**Triggers:**
+
 - Manual dispatch
 - Push to `main` when `pyproject.toml` changes
 
 **Actions:**
+
 - Build Python package
 - Upload artifacts
 - Publish to PyPI (uses OIDC, no token needed)
@@ -99,22 +103,26 @@ pre-commit run --all-files
 ## 📊 Quality Gates
 
 ### Coverage Requirements
+
 - **Target:** 85% minimum (configured in `pyproject.toml`)
 - **Current:** 100%
 - **Reporting:** Codecov integration enabled
 
 ### Lint & Format
+
 - **Ruff:** 0 errors required
 - **Black:** Consistent formatting enforced
 - **Line length:** 100 characters
 
 ### Type Safety
+
 - **mypy:** Strict mode enabled
 - **Python:** 3.11+ required
 
 ## 🔐 Security Policy
 
 ### Dependency Management
+
 - **Dependabot:** Weekly automated PR for pip and GitHub Actions
 - **pip-audit:** Fails CI on HIGH severity vulnerabilities
 - **bandit:** Scans for common security issues
@@ -124,11 +132,13 @@ pre-commit run --all-files
 Defined in `automation_policy.yaml`:
 
 **Auto-mergeable:**
+
 - Dev dependency patch updates
 - Formatting/lint fixes
 - Test-only changes
 
 **Requires Review:**
+
 - Public API changes
 - Major version bumps
 - ADR modifications
@@ -159,6 +169,7 @@ Defined in `automation_policy.yaml`:
 ### Agent Instructions
 
 Complete instructions for autonomous agents are in:
+
 - `.github/COPILOT_INSTRUCTIONS.md` - Main agent contract
 - `.github/ISSUE_TEMPLATE/agent_task.yml` - Structured task template
 - `automation_policy.yaml` - Automation rules
@@ -168,6 +179,7 @@ Complete instructions for autonomous agents are in:
 ### Status Badges
 
 All visible in README:
+
 - CI Status
 - Code Coverage (Codecov)
 - Python Version
@@ -185,6 +197,7 @@ All visible in README:
 ### Metrics Tracking
 
 The system includes a `MetricsTracker` that records:
+
 - Operation execution times
 - Success/failure rates
 - Performance trends over time
@@ -200,6 +213,7 @@ tracker.record_metric("response_time", 0.023)
 ### Feedback Loops
 
 The `FeedbackLoop` component enables:
+
 - Analysis of performance data
 - Generation of actionable insights
 - Automatic strategy adjustments
@@ -215,6 +229,7 @@ insights = loop.analyze_and_generate_insights()
 ### Performance Optimization
 
 Built-in optimization strategies:
+
 - **Caching:** Results caching with configurable TTL
 - **Profiling:** Performance profiling with context managers
 - **Batching:** Batch processing for bulk operations
@@ -270,24 +285,28 @@ These are documented in `roadmap.yaml` but can be implemented:
 ### Common Issues
 
 **Pre-commit fails:**
+
 ```bash
 pre-commit clean
 pre-commit run --all-files
 ```
 
 **Tests fail:**
+
 ```bash
 pytest -v  # Verbose output
 pytest --lf  # Run last failed
 ```
 
 **Lint errors:**
+
 ```bash
 ruff check . --fix  # Auto-fix where possible
 ruff format .       # Format code
 ```
 
 **Type errors:**
+
 ```bash
 mypy src/autonomous_dev --show-error-codes
 ```
@@ -302,6 +321,7 @@ mypy src/autonomous_dev --show-error-codes
 ### Coverage Drops
 
 If coverage falls below 85%:
+
 1. Identify uncovered lines: `pytest --cov --cov-report=html`
 2. Add tests for new code
 3. Consider if certain code should be excluded (e.g., `# pragma: no cover`)
