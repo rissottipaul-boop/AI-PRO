@@ -30,6 +30,9 @@ jobs:
               with:
                   name: dist-packages
                   path: dist/*
-            - name: Publish (PyPI)
+            - name: Publish to PyPI
               if: startsWith(github.ref, 'refs/heads/main')
               uses: pypa/gh-action-pypi-publish@release/v1
+              with:
+                  verbose: true
+                  print-hash: true
