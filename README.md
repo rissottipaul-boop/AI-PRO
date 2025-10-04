@@ -1,9 +1,16 @@
 # autonomous-dev
 
+[![CI](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml/badge.svg)](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/rissottipaul-boop/AI-PRO/branch/main/graph/badge.svg)](https://codecov.io/gh/rissottipaul-boop/AI-PRO)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
 Автономная заготовка репозитория для быстрой AI-ассистируемой разработки.
 
 ## Возможности
 
+### Базовые
 - Строгий Python 3.11+ (типизация, mypy strict)
 - Линтинг и автоформат (ruff + black)
 - Pre-commit хуки (ruff, black, mypy, pytest)
@@ -16,6 +23,13 @@
 - Makefile и PowerShell скрипт для Windows
 - VSCode задачи и настройки
 - ADR и архитектурная документация
+
+### Автономный AI-агент 🤖
+- **Copilot Instructions** (`.github/COPILOT_INSTRUCTIONS.md`) — полный контракт для агента
+- **Structured Tasks** (`.github/ISSUE_TEMPLATE/agent_task.yml`) — шаблон задач для агента
+- **Automation Guide** (`AUTOMATION_GUIDE.md`) — комплексная документация автоматизации
+- Conventional Commits стандарт
+- Чёткие границы разрешённых изменений
 
 ## Быстрый старт
 
@@ -57,25 +71,35 @@ pre-commit run --all-files
 ## Структура
 
 ```text
-src/autonomous_dev/        # исходный код
-tests/                     # тесты
-.github/workflows/ci.yml   # CI pipeline
-.github/workflows/release.yml # Release pipeline
-automation_policy.yaml     # Политика автономии
-ARCHITECTURE.md            # Архитектура
-DECISIONS/                 # ADR решения
-roadmap.yaml               # Дорожная карта
-.github/ISSUE_TEMPLATE/    # Шаблоны задач
+src/autonomous_dev/                      # исходный код
+tests/                                   # тесты
+.github/
+  ├── COPILOT_INSTRUCTIONS.md            # Инструкции для AI-агента
+  ├── ISSUE_TEMPLATE/agent_task.yml      # Шаблон задач для агента
+  └── workflows/
+      ├── ci.yml                         # CI pipeline
+      └── release.yml                    # Release pipeline
+automation_policy.yaml                   # Политика автономии
+AUTOMATION_GUIDE.md                      # Гид по автоматизации
+ARCHITECTURE.md                          # Архитектура
+DECISIONS/                               # ADR решения
+roadmap.yaml                             # Дорожная карта
 ```
 
 ## Автономный рабочий цикл AI
 
-1. Анализ задач (todo) — явная фиксация шагов
-2. Мелкие атомарные изменения
-3. Немедленная валидация (линт/типы/тесты) локально или через задачи
-4. CI (matrix + security) подтверждает корректность
-5. Метрики (coverage + security) → артефакты
-6. (Дальше) Автовыпуск и changelog
+См. полную документацию в `.github/COPILOT_INSTRUCTIONS.md` и `AUTOMATION_GUIDE.md`.
+
+**Краткий цикл:**
+
+1. **Plan** — анализ задач из roadmap/issues
+2. **Implement** — минимальные, атомарные изменения
+3. **Validate** — локальные проверки (lint + test)
+4. **Commit** — следуя Conventional Commits
+5. **CI Validation** — GitHub Actions проверяет всё
+6. **Review** — человек только для high-impact
+7. **Merge** — авто или manual (см. `automation_policy.yaml`)
+8. **Release** — автоматический при bump версии
 
 ## Политика автоматизации
 
@@ -111,10 +135,20 @@ Workflow `release.yml` собирает и публикует пакет при 
 
 `roadmap.yaml` хранит инициативы для планирования последующих автоматизаций.
 
+## Документация для AI-агентов
+
+- **[Copilot Instructions](.github/COPILOT_INSTRUCTIONS.md)** — полный контракт и гайдлайны
+- **[Automation Guide](AUTOMATION_GUIDE.md)** — инфраструктура автоматизации
+- **[Agent Task Template](.github/ISSUE_TEMPLATE/agent_task.yml)** — структурированные задачи
+- **[Automation Policy](automation_policy.yaml)** — правила и пороги
+- **[Architecture](ARCHITECTURE.md)** — архитектура системы
+- **[Roadmap](roadmap.yaml)** — дорожная карта
+
 ## Расширения (потенциал)
 
 - Devcontainer + Dockerfile
-- Semantic / conventional commits + автогенерация changelog
+- ✅ Conventional commits (реализовано)
+- Автогенерация changelog (git-cliff / github-changelog-generator)
 - SBOM + лицензии
 - ChatOps команды (slash /qa /security)
 - Performance benchmarks
@@ -122,4 +156,3 @@ Workflow `release.yml` собирает и публикует пакет при 
 ## Лицензия
 
 MIT
-# AI-PRO
