@@ -8,13 +8,15 @@ This repository is set up with a complete automation infrastructure for AI-assis
 
 All automation infrastructure is **complete and operational**:
 
-- ✅ Tests passing (100% coverage)
+- ✅ Tests passing (96%+ coverage)
 - ✅ Linting clean (Ruff + Black)
 - ✅ Type checking strict (mypy)
 - ✅ CI/CD workflows configured
 - ✅ Security scanning enabled
 - ✅ Coverage reporting (Codecov)
 - ✅ Release automation ready
+- ✅ **Self-learning system** (metrics, feedback loops)
+- ✅ **Performance optimization** (caching, profiling, batching)
 
 ## 🔄 Automated Workflows
 
@@ -150,6 +152,8 @@ Defined in `automation_policy.yaml`:
 - **Iterative:** Frequent small commits with validation
 - **Observable:** Coverage + CI badges show health
 - **Safe:** Multiple validation layers prevent breakage
+- **Self-Learning:** Track metrics and learn from patterns
+- **Optimized:** Cache results and optimize operations automatically
 
 ## 📈 Metrics & Monitoring
 
@@ -168,11 +172,50 @@ All visible in README:
 - **CI:** Coverage uploaded to Codecov on every build
 - **Trend:** Codecov tracks coverage over time
 
+## 🧠 Self-Learning Features
+
+### Metrics Tracking
+- **MetricsTracker**: Records and analyzes development metrics
+- **Persistent storage**: Optional JSON-based metric history
+- **Trend analysis**: Identifies patterns over time
+
+### Feedback Loops
+- **FeedbackLoop**: Evaluates iterations and suggests improvements
+- **Confidence scores**: Each insight has a confidence level
+- **Context-aware**: Adapts suggestions to task type
+
+### Performance Optimization
+- **Profiling**: `@timed` decorator tracks execution time
+- **Caching**: `@cached` decorator with LRU eviction
+- **Batching**: Automatic batching for large datasets
+- **Parallelization**: Smart detection of when to parallelize
+
+Example usage:
+```python
+from autonomous_dev import MetricsTracker, FeedbackLoop
+from autonomous_dev import timed, cached
+
+# Track metrics
+tracker = MetricsTracker()
+tracker.record_metric("test_duration", 12.5)
+
+# Get insights
+loop = FeedbackLoop(tracker)
+suggestions = loop.suggest_optimizations({"task_type": "testing"})
+
+# Optimize with decorators
+@timed("heavy_computation")
+@cached(max_size=100)
+def expensive_function(x):
+    return x ** 2
+```
+
 ## 🚀 Next Steps (Optional Enhancements)
 
 The infrastructure is complete and functional. Future optional improvements:
 
 ### Phase 1: Enhanced Automation
+- [x] Self-learning and performance optimization (COMPLETED 2025-10-04)
 - [ ] Automatic changelog generation (git-cliff)
 - [ ] Semantic version bump automation
 - [ ] Nightly workflow for long-running scans
@@ -180,12 +223,13 @@ The infrastructure is complete and functional. Future optional improvements:
 ### Phase 2: Expanded Coverage
 - [ ] SBOM generation (CycloneDX)
 - [ ] License compliance checking
-- [ ] Performance benchmarks
+- [ ] Advanced performance benchmarks with ML predictions
 
 ### Phase 3: Advanced Features
 - [ ] Devcontainer for consistent environments
 - [ ] ChatOps commands (slash commands)
 - [ ] Automated dependency grouping
+- [ ] Distributed metrics collection
 
 ## 📚 Documentation
 

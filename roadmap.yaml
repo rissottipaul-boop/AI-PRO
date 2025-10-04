@@ -6,13 +6,31 @@ quarters:
     - id: rel-automation
       title: Автоматизация релизов
       outcome: Теги и релизы без ручных шагов
+    - id: self-learning
+      title: Саамообучаемость и производительность
+      outcome: Система метрик, обратная связь, оптимизация производительности
+      status: completed
   Q1-2026:
     - id: api-stable
       title: Стабилизация публичного API
       outcome: SemVer + контрактные тесты
 
+completed:
+  - id: self-learning-system
+    title: Система саамообучения
+    description: Метрики, анализ трендов, генерация инсайтов
+    completion_date: 2025-10-04
+  - id: performance-optimization
+    title: Оптимизация производительности
+    description: Профилирование, кэширование, батчинг операций
+    completion_date: 2025-10-04
+  - id: feedback-loops
+    title: Циклы обратной связи
+    description: Автоматическая оценка итераций и предложения по улучшению
+    completion_date: 2025-10-04
+
 backlog:
   - id: devcontainer
     title: Dev контейнер среда
-  - id: perf-bench
-    title: Бенчмарки производительности
+  - id: advanced-perf-bench
+    title: Расширенные бенчмарки производительности
