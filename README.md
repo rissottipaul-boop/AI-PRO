@@ -122,3 +122,4 @@ Workflow `release.yml` собирает и публикует пакет при 
 ## Лицензия
 
 MIT
+# AI-PRO

@@ -22,7 +22,13 @@ def sum_all(values: Iterable[int]) -> int:
 
     Все значения предполагаются int согласно аннотации типов.
     """
-    return sum(values)
+    total = 0
+    for v in values:  # итерация для валидации каждого элемента
+        # Проверяем строго тип int (исключая например bool, если нужно можно ужесточить)
+        if type(v) is not int:  # noqa: E721 - преднамеренно используем type(...) is
+            raise ValueError(f"Expected int, got {type(v).__name__}")
+        total += v
+    return total
 
 
 __all__ = ["add", "sum_all"]
