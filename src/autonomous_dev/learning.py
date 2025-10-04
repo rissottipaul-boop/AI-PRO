@@ -158,6 +158,66 @@ class MetricsTracker:
                     )
                 )
 
+        # Analyze error trends
+        error_metrics = self.get_metrics("lint_errors")
+        if len(error_metrics) >= 3:
+            trends = self.analyze_trends("lint_errors", window_size=3)
+            if trends["mean"] > 0:
+                insights.append(
+                    LearningInsight(
+                        category="quality",
+                        description="Linting errors detected",
+                        confidence=0.95,
+                        suggested_action="Fix linting errors to maintain code quality standards",
+                    )
+                )
+            elif trends["trend_direction"] > 0.5:
+                insights.append(
+                    LearningInsight(
+                        category="quality",
+                        description="Linting errors are increasing",
+                        confidence=0.85,
+                        suggested_action="Review recent changes and address code quality issues",
+                    )
+                )
+
+        # Analyze test failure trends
+        test_failure_metrics = self.get_metrics("test_failures")
+        if len(test_failure_metrics) >= 3:
+            trends = self.analyze_trends("test_failures", window_size=3)
+            if trends["mean"] > 0:
+                insights.append(
+                    LearningInsight(
+                        category="reliability",
+                        description="Test failures detected",
+                        confidence=0.95,
+                        suggested_action="Investigate and fix failing tests immediately",
+                    )
+                )
+            elif trends["trend_direction"] > 0.5:
+                insights.append(
+                    LearningInsight(
+                        category="reliability",
+                        description="Test failure rate is increasing",
+                        confidence=0.85,
+                        suggested_action="Review test stability and fix flaky tests",
+                    )
+                )
+
+        # Analyze build error trends
+        build_error_metrics = self.get_metrics("build_errors")
+        if len(build_error_metrics) >= 3:
+            trends = self.analyze_trends("build_errors", window_size=3)
+            if trends["mean"] > 0:
+                insights.append(
+                    LearningInsight(
+                        category="reliability",
+                        description="Build errors detected",
+                        confidence=0.95,
+                        suggested_action="Fix build errors to restore system stability",
+                    )
+                )
+
         return insights
 
     def _save_metrics(self) -> None:
@@ -247,6 +307,42 @@ class FeedbackLoop:
                     "priority": 0.9,
                 }
             )
+
+        # Add error-handling suggestions for debugging tasks
+        if context.get("task_type") == "debugging":
+            suggestions.append(
+                {
+                    "category": "error_handling",
+                    "description": "Debugging task detected",
+                    "action": "Add comprehensive error logging and track error metrics",
+                    "priority": 0.85,
+                }
+            )
+
+        # Add error prevention suggestions for high complexity tasks
+        if context.get("complexity") == "high":
+            suggestions.append(
+                {
+                    "category": "error_handling",
+                    "description": "High complexity task detected",
+                    "action": "Implement robust error handling and validation",
+                    "priority": 0.8,
+                }
+            )
+
+        # Add suggestions based on error history
+        error_metrics = self.tracker.get_metrics("lint_errors")
+        if error_metrics and len(error_metrics) >= 3:
+            recent_errors = sum(m.value for m in error_metrics[-3:])
+            if recent_errors > 0:
+                suggestions.append(
+                    {
+                        "category": "error_handling",
+                        "description": "Recent linting errors detected",
+                        "action": "Run automated linting and fix issues before commit",
+                        "priority": 0.9,
+                    }
+                )
 
         return suggestions
 

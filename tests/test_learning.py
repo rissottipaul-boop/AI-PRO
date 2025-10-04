@@ -204,3 +204,82 @@ def test_feedback_loop_high_confidence_suggestions() -> None:
     for suggestion in suggestions:
         if "priority" in suggestion:
             assert suggestion["priority"] >= 0.7
+
+
+def test_metrics_tracker_generate_insights_lint_errors() -> None:
+    """Test generating insights for lint errors."""
+    tracker = MetricsTracker()
+    # Record lint errors
+    for i in range(4):
+        tracker.record_metric("lint_errors", float(i))
+
+    insights = tracker.generate_insights()
+    # Should detect lint errors
+    lint_insights = [i for i in insights if "lint" in i.description.lower()]
+    assert len(lint_insights) > 0
+    assert lint_insights[0].category == "quality"
+
+
+def test_metrics_tracker_generate_insights_test_failures() -> None:
+    """Test generating insights for test failures."""
+    tracker = MetricsTracker()
+    # Record test failures
+    for i in range(4):
+        tracker.record_metric("test_failures", float(2))
+
+    insights = tracker.generate_insights()
+    # Should detect test failures
+    failure_insights = [i for i in insights if "test" in i.description.lower() and "failure" in i.description.lower()]
+    assert len(failure_insights) > 0
+    assert failure_insights[0].category == "reliability"
+
+
+def test_metrics_tracker_generate_insights_build_errors() -> None:
+    """Test generating insights for build errors."""
+    tracker = MetricsTracker()
+    # Record build errors
+    for i in range(3):
+        tracker.record_metric("build_errors", float(1))
+
+    insights = tracker.generate_insights()
+    # Should detect build errors
+    build_insights = [i for i in insights if "build" in i.description.lower()]
+    assert len(build_insights) > 0
+    assert build_insights[0].category == "reliability"
+
+
+def test_feedback_loop_suggest_optimizations_debugging() -> None:
+    """Test suggesting optimizations for debugging tasks."""
+    tracker = MetricsTracker()
+    loop = FeedbackLoop(tracker)
+
+    suggestions = loop.suggest_optimizations({"task_type": "debugging"})
+    # Should include debugging-specific suggestion
+    assert len(suggestions) > 0
+    assert any("debugging" in s["description"].lower() for s in suggestions)
+
+
+def test_feedback_loop_suggest_optimizations_high_complexity() -> None:
+    """Test suggesting optimizations for high complexity tasks."""
+    tracker = MetricsTracker()
+    loop = FeedbackLoop(tracker)
+
+    suggestions = loop.suggest_optimizations({"complexity": "high"})
+    # Should include high complexity suggestion
+    assert len(suggestions) > 0
+    assert any("high complexity" in s["description"].lower() for s in suggestions)
+
+
+def test_feedback_loop_suggest_optimizations_with_errors() -> None:
+    """Test suggesting optimizations when errors are present."""
+    tracker = MetricsTracker()
+    loop = FeedbackLoop(tracker)
+
+    # Record some lint errors
+    for i in range(3):
+        tracker.record_metric("lint_errors", float(2))
+
+    suggestions = loop.suggest_optimizations({})
+    # Should include error-related suggestions
+    error_suggestions = [s for s in suggestions if s.get("category") == "error_handling" or "error" in s.get("description", "").lower()]
+    assert len(error_suggestions) > 0
