@@ -1,5 +1,11 @@
 # autonomous-dev
 
+[![CI](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml/badge.svg)](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/rissottipaul-boop/AI-PRO/branch/main/graph/badge.svg)](https://codecov.io/gh/rissottipaul-boop/AI-PRO)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
 Автономная заготовка репозитория для быстрой AI-ассистируемой разработки.
 
 ## Возможности
@@ -122,4 +128,3 @@ Workflow `release.yml` собирает и публикует пакет при 
 ## Лицензия
 
 MIT
-# AI-PRO
