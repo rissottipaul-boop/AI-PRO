@@ -175,6 +175,54 @@ Workflow `release.yml` собирает и публикует пакет при 
 - ChatOps команды (slash /qa /security)
 - Performance benchmarks
 
+## Интеграция с GitHub MCP (docker)
+
+Запуск локального GitHub MCP сервера (пример: `ghcr.io/github/github-mcp-server`).
+
+### Linux / macOS
+
+```bash
+docker run --rm -it \
+  -e GITHUB_PERSONAL_ACCESS_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx \
+  -e GITHUB_TOOLSETS="repos,issues,pull_requests,actions,code_security" \
+  ghcr.io/github/github-mcp-server:latest
+```
+
+### PowerShell (Windows)
+
+```powershell
+$Env:GITHUB_PERSONAL_ACCESS_TOKEN = "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+$Env:GITHUB_TOOLSETS = "repos,issues,pull_requests,actions,code_security"
+
+docker run --rm -it `
+  -e GITHUB_PERSONAL_ACCESS_TOKEN=$Env:GITHUB_PERSONAL_ACCESS_TOKEN `
+  -e GITHUB_TOOLSETS=$Env:GITHUB_TOOLSETS `
+  ghcr.io/github/github-mcp-server:latest
+```
+
+Или одной строкой:
+
+```powershell
+docker run --rm -it -e GITHUB_PERSONAL_ACCESS_TOKEN=$Env:GITHUB_PERSONAL_ACCESS_TOKEN -e GITHUB_TOOLSETS=$Env:GITHUB_TOOLSETS ghcr.io/github/github-mcp-server:latest
+```
+
+### Частые ошибки и их исправление
+
+| Симптом | Причина | Решение |
+|---------|---------|---------|
+| `-e: The term '-e' is not recognized` | Скопированы строки с начала (bash style) без `docker run` | Объединить в одну команду или использовать обратные апострофы ` в PowerShell |
+| `ghcr.io/... not recognized` | Запуск имени образа отдельно | Добавить префикс `docker run` |
+| `unauthorized: authentication required` | Нет прав или токен некорректен | Проверить PAT: repo + actions (либо fine-grained) |
+| `network error` | Docker не запущен | Запустить Docker Desktop |
+
+### Рекомендации по безопасности
+
+- Минимизируй scope токена (fine-grained предпочтителен)
+- Не сохраняй PAT в репозитории
+- Используй менеджер секретов / переменные среды
+
+---
+
 ## Лицензия
 
 MIT
