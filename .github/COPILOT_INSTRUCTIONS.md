@@ -79,7 +79,6 @@ pytest --cov=src/autonomous_dev --cov-fail-under=85
 
 ### Примеры
 
-```
 feat: add metrics tracking for performance analysis
 fix: handle edge case in learning insight generation
 refactor: extract common optimization logic
@@ -88,7 +87,6 @@ chore: update ruff to 0.13.0
 docs: clarify self-learning module usage
 perf: optimize cache lookup with binary search
 ci: add Python 3.14 to test matrix
-```
 
 ## Branch Naming
 
@@ -277,3 +275,47 @@ tests/                           ← тесты
 ---
 
 **Примечание:** Этот файл — единый источник правды для автономной работы агента. При возникновении противоречий с другими документами — этот файл имеет приоритет для автоматизированной работы.
+
+## MCP Integration
+
+Для взаимодействия с GitHub через Model Context Protocol предоставлен файл `mcp.json` в корне репозитория.
+
+### Назначение
+
+Конфиг описывает запуск GitHub MCP сервера в Docker контейнере (образ: `ghcr.io/github/github-mcp-server`). Клиент MCP запрашивает ввод персонального токена и передаёт его контейнеру через переменную окружения `GITHUB_PERSONAL_ACCESS_TOKEN`.
+
+### Файл `mcp.json` (фрагмент)
+
+```jsonc
+{
+  "mcp": {
+    "inputs": [
+      { "type": "promptString", "id": "github_token", "description": "GitHub Personal Access Token", "password": true }
+    ],
+    "servers": {
+      "github": {
+        "command": "docker",
+        "args": [
+          "run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"
+        ],
+        "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}" }
+      }
+    }
+  }
+}
+```
+
+### Политика безопасности MCP
+
+- Не хранить токены в файлах / git истории
+- Использовать fine-grained PAT с минимальными правами (`repo`, опционально `actions`, `security_events`)
+- Регулярно ревокать неиспользуемые токены
+- Не инжектировать токен в логи CI
+
+### Поведение агента
+
+Если требуется доступ к GitHub API через MCP:
+
+1. Проверить наличие файла `mcp.json`
+2. Убедиться, что токен запрошен интерактивно клиентом
+3. Не предлагать пользователю вводить токен в открытом виде в PR/issue

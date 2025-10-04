@@ -208,51 +208,52 @@ pre-commit run --all-files
 
 При изменении `pyproject.toml` пересоберите контейнер: F1 → Dev Containers: Rebuild Container
 
-## Интеграция с GitHub MCP (docker)
+## MCP Конфигурация
 
-Запуск локального GitHub MCP сервера (пример: `ghcr.io/github/github-mcp-server`).
+В репозитории доступен файл `mcp.json`, описывающий запуск GitHub MCP сервера через Docker.
 
-### Linux / macOS
-
-```bash
-docker run --rm -it \
-  -e GITHUB_PERSONAL_ACCESS_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx \
-  -e GITHUB_TOOLSETS="repos,issues,pull_requests,actions,code_security" \
-  ghcr.io/github/github-mcp-server:latest
+```jsonc
+{
+  "mcp": {
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "github_token",
+        "description": "GitHub Personal Access Token",
+        "password": true
+      }
+    ],
+    "servers": {
+      "github": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+            "-e",
+          "GITHUB_PERSONAL_ACCESS_TOKEN",
+          "ghcr.io/github/github-mcp-server"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+        }
+      }
+    }
+  }
+}
 ```
 
-### PowerShell (Windows)
+### Использование
 
-```powershell
-$Env:GITHUB_PERSONAL_ACCESS_TOKEN = "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-$Env:GITHUB_TOOLSETS = "repos,issues,pull_requests,actions,code_security"
+1. Получить GitHub Personal Access Token (минимально: `repo`, при необходимости `actions`, `security_events`)
+2. При инициализации MCP клиент запросит ввод `github_token`
+3. Сервер запустится в контейнере `ghcr.io/github/github-mcp-server`
 
-docker run --rm -it `
-  -e GITHUB_PERSONAL_ACCESS_TOKEN=$Env:GITHUB_PERSONAL_ACCESS_TOKEN `
-  -e GITHUB_TOOLSETS=$Env:GITHUB_TOOLSETS `
-  ghcr.io/github/github-mcp-server:latest
-```
+### Безопасность (MCP)
 
-Или одной строкой:
-
-```powershell
-docker run --rm -it -e GITHUB_PERSONAL_ACCESS_TOKEN=$Env:GITHUB_PERSONAL_ACCESS_TOKEN -e GITHUB_TOOLSETS=$Env:GITHUB_TOOLSETS ghcr.io/github/github-mcp-server:latest
-```
-
-### Частые ошибки и их исправление
-
-| Симптом | Причина | Решение |
-|---------|---------|---------|
-| `-e: The term '-e' is not recognized` | Скопированы строки с начала (bash style) без `docker run` | Объединить в одну команду или использовать обратные апострофы ` в PowerShell |
-| `ghcr.io/... not recognized` | Запуск имени образа отдельно | Добавить префикс `docker run` |
-| `unauthorized: authentication required` | Нет прав или токен некорректен | Проверить PAT: repo + actions (либо fine-grained) |
-| `network error` | Docker не запущен | Запустить Docker Desktop |
-
-### Рекомендации по безопасности
-
-- Минимизируй scope токена (fine-grained предпочтителен)
-- Не сохраняй PAT в репозитории
-- Используй менеджер секретов / переменные среды
+- Не коммитить реальные токены
+- Использовать fine-grained токен с минимальным scope
+- Регулярно ревокать неиспользуемые ключи
 
 ---
 
