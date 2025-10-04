@@ -235,7 +235,6 @@ ci: add Python 3.14 to test matrix
 
 ## Key Files & Directories
 
-```
 .github/
   ├── COPILOT_INSTRUCTIONS.md    ← этот файл
   ├── ISSUE_TEMPLATE/
@@ -253,6 +252,7 @@ ARCHITECTURE.md                  ← архитектура системы
 DECISIONS/                       ← ADR (Architecture Decision Records)
 src/autonomous_dev/              ← исходный код
 tests/                           ← тесты
+
 ```
 
 ## References
