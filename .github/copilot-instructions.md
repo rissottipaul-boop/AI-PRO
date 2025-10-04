@@ -101,6 +101,7 @@ ci: add Python 3.14 to test matrix
 ### 1. Подготовка (Planning)
 
 - Прочитать `.github/copilot-instructions.md` (этот файл)
+- Проверить `.github/agents/` на наличие специализированных инструкций для вашего типа задач
 - Изучить `automation_policy.yaml` — правила автоматизации
 - Просмотреть `roadmap.yaml` — дорожная карта проекта
 - Проверить открытые issues и PR
@@ -237,6 +238,8 @@ ci: add Python 3.14 to test matrix
 
 .github/
   ├── copilot-instructions.md    ← этот файл
+  ├── agents/                    ← agent-specific instructions
+  │   └── README.md              ← agent types documentation
   ├── ISSUE_TEMPLATE/
   │   ├── agent_task.yml         ← шаблон для задач агента
   │   ├── bug_report.yml
@@ -275,6 +278,8 @@ tests/                           ← тесты
 ---
 
 **Примечание:** Этот файл — единый источник правды для автономной работы агента. При возникновении противоречий с другими документами — этот файл имеет приоритет для автоматизированной работы.
+
+**Specialized Agents:** Для специализированных задач проверьте директорию `.github/agents/` на наличие дополнительных инструкций, специфичных для вашего типа агента.
 
 ## MCP Integration
 
