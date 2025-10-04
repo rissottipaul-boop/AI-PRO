@@ -29,7 +29,7 @@
 
 ### Автономный AI-агент 🤖
 
-- **Copilot Instructions** (`.github/COPILOT_INSTRUCTIONS.md`) — полный контракт для агента
+- **Copilot Instructions** (`.github/copilot-instructions.md`) — полный контракт для агента
 - **Structured Tasks** (`.github/ISSUE_TEMPLATE/agent_task.yml`) — шаблон задач для агента
 - **Automation Guide** (`AUTOMATION_GUIDE.md`) — комплексная документация автоматизации
 - Conventional Commits стандарт
@@ -96,7 +96,7 @@ pre-commit run --all-files
 src/autonomous_dev/                      # исходный код
 tests/                                   # тесты
 .github/
-  ├── COPILOT_INSTRUCTIONS.md            # Инструкции для AI-агента
+  ├── copilot-instructions.md            # Инструкции для AI-агента
   ├── ISSUE_TEMPLATE/agent_task.yml      # Шаблон задач для агента
   └── workflows/
       ├── ci.yml                         # CI pipeline
@@ -111,7 +111,7 @@ roadmap.yaml                             # Дорожная карта
 
 ## Автономный рабочий цикл AI
 
-См. полную документацию в `.github/COPILOT_INSTRUCTIONS.md` и `AUTOMATION_GUIDE.md`.
+См. полную документацию в `.github/copilot-instructions.md` и `AUTOMATION_GUIDE.md`.
 
 **Краткий цикл:**
 
@@ -160,7 +160,7 @@ Workflow `release.yml` собирает и публикует пакет при 
 
 ## Документация для AI-агентов
 
-- **[Copilot Instructions](.github/COPILOT_INSTRUCTIONS.md)** — полный контракт и гайдлайны
+- **[Copilot Instructions](.github/copilot-instructions.md)** — полный контракт и гайдлайны
 - **[Automation Guide](AUTOMATION_GUIDE.md)** — инфраструктура автоматизации
 - **[Agent Task Template](.github/ISSUE_TEMPLATE/agent_task.yml)** — структурированные задачи
 - **[Automation Policy](automation_policy.yaml)** — правила и пороги
