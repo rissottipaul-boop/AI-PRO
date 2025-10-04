@@ -1,0 +1,33 @@
+name: Generate Changelog
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install git-cliff
+        run: |
+          curl -L https://github.com/orhun/git-cliff/releases/latest/download/git-cliff-x86_64-unknown-linux-gnu.tar.gz -o cliff.tar.gz
+          tar -xzf cliff.tar.gz --strip-components=1 git-cliff
+          sudo mv git-cliff /usr/local/bin/
+      - name: Generate CHANGELOG.md
+        run: git-cliff -o CHANGELOG.md
+      - name: Commit changelog (if updated)
+        run: |
+          if git diff --quiet; then
+            echo "No changelog changes";
+          else
+            git config user.name "github-actions"
+            git config user.email "actions@users.noreply.github.com"
+            git add CHANGELOG.md
+            git commit -m "docs(changelog): update after release"
+            git push
+          fi

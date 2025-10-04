@@ -1,5 +1,13 @@
 # autonomous-dev
 
+![CI](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml/badge.svg)
+![Nightly](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/nightly.yml/badge.svg)
+![Changelog](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/changelog.yml/badge.svg)
+![Coverage](https://codecov.io/gh/rissottipaul-boop/AI-PRO/branch/main/graph/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![Python Versions](https://img.shields.io/badge/python-3.11%20|%203.12%20|%203.13-3776AB.svg)
+![SBOM](https://img.shields.io/badge/SBOM-CycloneDX-success.svg)
+
 Автономная заготовка репозитория для быстрой AI-ассистируемой разработки.
 
 ## Возможности
