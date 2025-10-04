@@ -1,9 +1,15 @@
 # autonomous-dev
 
+[![CI](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml/badge.svg)](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml)
+[![Python Version](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/downloads/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
 Автономная заготовка репозитория для быстрой AI-ассистируемой разработки.
 
 ## Возможности
 
+### Базовые
 - Строгий Python 3.11+ (типизация, mypy strict)
 - Линтинг и автоформат (ruff + black)
 - Pre-commit хуки (ruff, black, mypy, pytest)
@@ -12,10 +18,22 @@
 - Security сканы: bandit, pip-audit (HIGH), deptry
 - Automation Policy (`automation_policy.yaml`)
 - Dependabot (pip + actions)
-- Release workflow (build + publish на PyPI по main, требует секрет `PYPI_TOKEN`)
+- Release workflow (build + publish на PyPI по main, OIDC без токенов)
 - Makefile и PowerShell скрипт для Windows
 - VSCode задачи и настройки
 - ADR и архитектурная документация
+
+### Автономная разработка 🤖
+- **Copilot Instructions** (`.github/COPILOT_INSTRUCTIONS.md`) — полное руководство для AI агентов
+- **Agent Task Template** — структурированные задачи для автономного выполнения
+- **Conventional Commits** — стандартизированная история изменений
+- **Automated Quality Gates** — многоуровневая валидация без ручного контроля
+
+### Саамообучение и производительность 🚀
+- **MetricsTracker** — сбор и анализ метрик разработки
+- **FeedbackLoop** — генерация инсайтов и рекомендаций
+- **PerformanceOptimizer** — кэширование, профилирование, пакетная обработка
+- **Trend Analysis** — выявление паттернов в исторических данных
 
 ## Быстрый старт
 
@@ -61,8 +79,11 @@ src/autonomous_dev/        # исходный код
 tests/                     # тесты
 .github/workflows/ci.yml   # CI pipeline
 .github/workflows/release.yml # Release pipeline
+.github/COPILOT_INSTRUCTIONS.md # Инструкции для AI агента
 automation_policy.yaml     # Политика автономии
 ARCHITECTURE.md            # Архитектура
+AUTOMATION_GUIDE.md        # Руководство по автоматизации
+SELF_LEARNING_GUIDE.md     # Руководство по саамообучению
 DECISIONS/                 # ADR решения
 roadmap.yaml               # Дорожная карта
 .github/ISSUE_TEMPLATE/    # Шаблоны задач
@@ -75,7 +96,11 @@ roadmap.yaml               # Дорожная карта
 3. Немедленная валидация (линт/типы/тесты) локально или через задачи
 4. CI (matrix + security) подтверждает корректность
 5. Метрики (coverage + security) → артефакты
-6. (Дальше) Автовыпуск и changelog
+6. **Обратная связь**: анализ метрик, генерация инсайтов
+7. **Оптимизация**: применение стратегий улучшения производительности
+8. (Дальше) Автовыпуск и changelog
+
+См. подробнее: [AUTOMATION_GUIDE.md](AUTOMATION_GUIDE.md)
 
 ## Политика автоматизации
 
@@ -100,12 +125,15 @@ roadmap.yaml               # Дорожная карта
 
 ## Релизы
 
-Workflow `release.yml` собирает и публикует пакет при изменении `pyproject.toml` в ветке `main` (нужен секрет `PYPI_TOKEN`).
+Workflow `release.yml` собирает и публикует пакет при изменении `pyproject.toml` в ветке `main` (использует OIDC, секреты не нужны).
 
 ## Архитектура и ADR
 
 - `ARCHITECTURE.md` — обзор слоёв
-- `DECISIONS/ADR-0001-initial-architecture.md` — фиксация ключевых решений
+- `AUTOMATION_GUIDE.md` — руководство по инфраструктуре автоматизации
+- `SELF_LEARNING_GUIDE.md` — руководство по саамообучению и оптимизации
+- `DECISIONS/ADR-0001-initial-architecture.md` — начальная архитектура
+- `DECISIONS/ADR-0002-self-learning-performance.md` — система саамообучения
 
 ## Дорожная карта
 
