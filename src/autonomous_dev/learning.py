@@ -212,9 +212,7 @@ class FeedbackLoop:
         # Generate insights
         return self.tracker.generate_insights()
 
-    def suggest_optimizations(
-        self, context: dict[str, Any]
-    ) -> Sequence[dict[str, str | float]]:
+    def suggest_optimizations(self, context: dict[str, Any]) -> Sequence[dict[str, str | float]]:
         """Suggest optimizations based on context.
 
         Args:
