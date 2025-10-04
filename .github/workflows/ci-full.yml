@@ -17,6 +17,7 @@ jobs:
             fail-fast: false
             matrix:
                 python-version: ["3.11", "3.12", "3.13"]
+        # Using secret directly in Codecov step; removed intermediate env variable.
         steps:
             - uses: actions/checkout@v4
             - name: Set up Python
@@ -33,18 +34,16 @@ jobs:
                   ruff check .
                   ruff format --check .
                   mypy src/autonomous_dev
-            - name: Tests (coverage gate)
-              run: pytest --cov-report=xml
+            - name: Test & Generate Coverage
+              run: |
+                  pytest --cov=src/autonomous_dev --cov-report=xml
             - name: Upload coverage to Codecov
-              if: ${{ success() && matrix.python-version == '3.11' && env.CODECOV_TOKEN != '' }}
+              if: ${{ success() && matrix.python-version == '3.11' }}
               uses: codecov/codecov-action@v4
-              env:
-                  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
               with:
-                  token: ${{ env.CODECOV_TOKEN }}
+                  # token removed: tokenless upload works for public repositories
                   files: coverage.xml
                   verbose: true
-
     security:
         name: Security & Dependencies
         runs-on: ubuntu-latest

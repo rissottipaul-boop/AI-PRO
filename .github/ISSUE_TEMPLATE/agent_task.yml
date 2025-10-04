@@ -1,4 +1,5 @@
 name: Agent Task
+<<<<<<< Updated upstream
 description: Структурированная задача для Copilot агента
 title: "[AGENT] "
 labels: ["agent-task"]
@@ -137,3 +138,46 @@ body:
         
         **Для человека:** Этот шаблон структурирует задачи так, чтобы агент мог работать 
         максимально автономно при соблюдении всех качественных стандартов.
+=======
+description: Structured task for Copilot agent
+labels: ["agent-task"]
+title: "agent: <кратко>"
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context / Rationale
+      description: Почему это нужно? Ссылки на исходные обсуждения / проблемы.
+      placeholder: >-
+        Кратко зачем. Ссылка на issue/ADR/roadmap пункт.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope (In / Out)
+      description: Что включено и что явно исключено.
+      placeholder: >-
+        In: ...\nOut: ...
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: Проверяемые условия завершения (тесты, файлы, показатели).
+      placeholder: >-
+        - Тесты добавлены\n- Покрытие не ниже ...\n- Нет новых mypy ошибок
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks / Edge Cases
+      description: Какие риски и как их минимизировать.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: ADR, ссылки, наброски.
+>>>>>>> Stashed changes

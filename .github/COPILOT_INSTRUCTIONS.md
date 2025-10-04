@@ -23,7 +23,7 @@
 
 ## Tooling Contract
 
-### Перед каждым коммитом выполни локально:
+### Перед каждым коммитом выполни локально
 
 ```bash
 # 1. Pre-commit hooks
@@ -33,7 +33,7 @@ pre-commit run --all-files
 pytest --cov=src/autonomous_dev --cov-fail-under=85
 ```
 
-### Не разрешается без явного обоснования:
+### Не разрешается без явного обоснования
 
 - Снижать строгость mypy (strict mode обязателен)
 - Удалять тесты
@@ -65,7 +65,7 @@ pytest --cov=src/autonomous_dev --cov-fail-under=85
 
 Используем **Conventional Commits** для структурирования истории:
 
-### Типы коммитов:
+### Типы коммитов
 
 - `feat:` — новая функциональность
 - `fix:` — исправление бага
@@ -77,7 +77,7 @@ pytest --cov=src/autonomous_dev --cov-fail-under=85
 - `build:` или `ci:` — изменения сборки/CI пайплайна
 - `style:` — форматирование (без изменения логики)
 
-### Примеры:
+### Примеры
 
 ```
 feat: add metrics tracking for performance analysis
@@ -120,6 +120,7 @@ ci: add Python 3.14 to test matrix
 - Внести изменения (минимальные, атомарные)
 - Обновить/создать тесты при любом изменении логики
 - Прогнать локальные проверки:
+
   ```bash
   pre-commit run --all-files
   pytest --cov=src/autonomous_dev --cov-fail-under=85
@@ -182,6 +183,7 @@ ci: add Python 3.14 to test matrix
 ### Если нужна новая зависимость
 
 Обязательно указать:
+
 - Причина добавления
 - Рассмотренные альтернативы
 - Активная поддержка (дата последнего релиза)
@@ -218,14 +220,14 @@ ci: add Python 3.14 to test matrix
 
 См. `automation_policy.yaml` для полной политики. Основные моменты:
 
-### Auto-mergeable (при зелёном CI):
+### Auto-mergeable (при зелёном CI)
 
 - Dev dependency patch updates
 - Форматирование кода
 - Изменения только тестов (без изменения логики)
 - Обновления документации (non-ADR)
 
-### Requires Human Review:
+### Requires Human Review
 
 - Public API changes
 - Major version bumps

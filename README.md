@@ -1,30 +1,26 @@
 # autonomous-dev
 
-[![CI](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml/badge.svg)](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/rissottipaul-boop/AI-PRO/branch/main/graph/badge.svg)](https://codecov.io/gh/rissottipaul-boop/AI-PRO)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-
 Автономная заготовка репозитория для быстрой AI-ассистируемой разработки.
 
 ## Возможности
 
 ### Базовые
+
 - Строгий Python 3.11+ (типизация, mypy strict)
 - Линтинг и автоформат (ruff + black)
-- Pre-commit хуки (ruff, black, mypy, pytest)
+- Pre-commit хуки (ruff, black, mypy)
 - Тестирование (pytest + coverage, порог 85%)
 - CI (GitHub Actions) — matrix (3.11, 3.12, 3.13) + отдельный security job
 - Security сканы: bandit, pip-audit (HIGH), deptry
 - Automation Policy (`automation_policy.yaml`)
 - Dependabot (pip + actions)
-- Release workflow (build + publish на PyPI по main, требует секрет `PYPI_TOKEN`)
+- Release workflow (build + publish на PyPI по main через OIDC, без пароля)
 - Makefile и PowerShell скрипт для Windows
 - VSCode задачи и настройки
 - ADR и архитектурная документация
 
 ### Автономный AI-агент 🤖
+
 - **Copilot Instructions** (`.github/COPILOT_INSTRUCTIONS.md`) — полный контракт для агента
 - **Structured Tasks** (`.github/ISSUE_TEMPLATE/agent_task.yml`) — шаблон задач для агента
 - **Automation Guide** (`AUTOMATION_GUIDE.md`) — комплексная документация автоматизации
@@ -156,3 +152,5 @@ Workflow `release.yml` собирает и публикует пакет при 
 ## Лицензия
 
 MIT
+
+# AI-PRO
