@@ -30,11 +30,29 @@
 ## Быстрый старт
 
 ```bash
-# (опционально) создать и активировать виртуальное окружение
+# (опционально) создать виртуальное окружение (Linux/macOS)
 python -m venv .venv
-source .venv/Scripts/activate  # Windows PowerShell: ./.venv/Scripts/Activate.ps1
+source .venv/bin/activate
+```
 
-# Установка зависимостей (dev)
+PowerShell (Windows):
+
+```powershell
+python -m venv .venv
+./.venv/Scripts/Activate.ps1
+```
+
+CMD (Windows):
+
+```bat
+python -m venv .venv
+.\.venv\Scripts\activate.bat
+```
+
+Далее общие шаги:
+
+```bash
+# Установка dev зависимостей
 pip install .[dev]
 
 # Запуск тестов
@@ -120,7 +138,7 @@ roadmap.yaml                             # Дорожная карта
 
 ## Релизы
 
-Workflow `release.yml` собирает и публикует пакет при изменении `pyproject.toml` в ветке `main` (нужен секрет `PYPI_TOKEN`).
+Workflow `release.yml` собирает и публикует пакет при изменении `pyproject.toml` в ветке `main` (OIDC Trusted Publishing — `PYPI_TOKEN` не требуется). Убедись, что версия повышена по семантике (semver) перед merge.
 
 ## Архитектура и ADR
 
@@ -152,5 +170,3 @@ Workflow `release.yml` собирает и публикует пакет при 
 ## Лицензия
 
 MIT
-
-# AI-PRO
