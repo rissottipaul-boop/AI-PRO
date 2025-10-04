@@ -1,23 +1,23 @@
 version: 2
 updates:
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
-    labels: ["dependencies", "automated"]
-    groups:
-      minor-and-patch:
-        update-types: ["minor", "patch"]
-      major:
-        update-types: ["major"]
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    labels: ["ci", "automated"]
-    groups:
-      actions-minor-patch:
-        update-types: ["minor", "patch"]
-      actions-major:
-        update-types: ["major"]
+    - package-ecosystem: "pip"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+      open-pull-requests-limit: 10
+      labels: ["dependencies", "automated"]
+      groups:
+          minor-and-patch:
+              update-types: ["minor", "patch"]
+          major:
+              update-types: ["major"]
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+      labels: ["ci", "automated"]
+      groups:
+          actions-minor-patch:
+              update-types: ["minor", "patch"]
+          actions-major:
+              update-types: ["major"]
