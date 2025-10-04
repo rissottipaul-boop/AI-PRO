@@ -31,6 +31,7 @@ dist/
 .coverage*
 htmlcov/
 .coverage
+coverage.xml
 
 # Ruff
 .ruff_cache/
