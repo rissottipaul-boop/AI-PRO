@@ -1,0 +1,48 @@
+name: Feature Request
+description: Предложить улучшение или новую возможность
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Опишите ценность, а не только реализацию.
+  - type: input
+    id: title
+    attributes:
+      label: Заголовок
+      placeholder: Коротко о фиче
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Связанная проблема / контекст
+      placeholder: Какую боль решаем?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Предложенное решение
+      placeholder: Идея реализации
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Рассмотренные альтернативы
+    validations:
+      required: false
+  - type: textarea
+    id: risks
+    attributes:
+      label: Риски и допущения
+    validations:
+      required: false
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Метрики успеха
+      placeholder: Что улучшится?
+    validations:
+      required: false

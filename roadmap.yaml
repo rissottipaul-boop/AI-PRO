@@ -1,0 +1,18 @@
+quarters:
+  Q4-2025:
+    - id: sec-hardening
+      title: Усиление безопасности
+      outcome: CI security качество без ложных срабатываний
+    - id: rel-automation
+      title: Автоматизация релизов
+      outcome: Теги и релизы без ручных шагов
+  Q1-2026:
+    - id: api-stable
+      title: Стабилизация публичного API
+      outcome: SemVer + контрактные тесты
+
+backlog:
+  - id: devcontainer
+    title: Dev контейнер среда
+  - id: perf-bench
+    title: Бенчмарки производительности

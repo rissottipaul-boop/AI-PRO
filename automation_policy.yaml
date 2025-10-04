@@ -1,0 +1,29 @@
+version: 1
+policies:
+  coverage_min: 85
+  lint_strict: true
+  allow_auto_merge_green: true
+
+allow:
+  - dev-deps-patch-updates
+  - format-code
+  - regenerate-readme-toc
+  - security-audit-reports
+
+require_review:
+  - public-api-change
+  - major-version-bump
+  - architecture-adr-change
+
+quality_gates:
+  ruff_errors_max: 0
+  mypy_errors_max: 0
+  tests_flaky_allow: 0
+
+pip_audit:
+  fail_on_severity: high
+
+labels_mapping:
+  security: ["security", "vulnerability"]
+  maintenance: ["chore", "refactor"]
+# Будущая интеграция: GitHub Action читает файл и решает что делать.

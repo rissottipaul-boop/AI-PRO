@@ -1,0 +1,62 @@
+name: Bug Report
+description: Сообщить об ошибке
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Спасибо за отчёт! Заполните по максимуму.
+  - type: input
+    id: summary
+    attributes:
+      label: Краткое описание
+      placeholder: Что не так?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения
+      description: Нумерованный список
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемое поведение
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Фактическое поведение
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Важность
+      options:
+        - low
+        - medium
+        - high
+        - critical
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Версия / commit
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Логи / трассировки
+      render: shell
+    validations:
+      required: false

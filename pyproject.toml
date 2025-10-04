@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autonomous-dev"
+version = "0.1.0"
+description = "Автономная заготовка проекта для AI-ассистируемой разработки"
+authors = [ { name = "Auto Dev" } ]
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "pytest-cov>=5.0.0",
+  "mypy>=1.10.0",
+  "ruff>=0.6.0",
+  "black>=24.3.0",
+  "pre-commit>=3.5.0",
+  "typing-extensions>=4.12.0",
+  "bandit>=1.7.9",
+  "pip-audit>=2.7.3",
+  "deptry>=0.20.0"
+]
+
+[tool.pytest.ini_options]
+addopts = "-q --cov=src/autonomous_dev --cov-report=term-missing --cov-fail-under=85"
+pythonpath = ["src"]
+
+[tool.coverage.run]
+branch = true
+source = ["src/autonomous_dev"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4", "TID", "N"]
+ignore = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["autonomous_dev"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_unused_configs = true
+warn_return_any = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unreachable = true
+strict_optional = true
+strict_equality = true
+check_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+exclude = ["^tests/"]
+
