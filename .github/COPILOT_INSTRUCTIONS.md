@@ -235,7 +235,7 @@ ci: add Python 3.14 to test matrix
 
 ## Key Files & Directories
 
-```
+```text
 .github/
   ├── COPILOT_INSTRUCTIONS.md    ← этот файл
   ├── ISSUE_TEMPLATE/
