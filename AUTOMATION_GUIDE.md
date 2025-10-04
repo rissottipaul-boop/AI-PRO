@@ -234,6 +234,7 @@ The infrastructure is complete and functional. Future optional improvements:
 ## 📚 Documentation
 
 - **Architecture:** `ARCHITECTURE.md` - System design and principles
+- **Self-Learning:** `SELF_LEARNING_GUIDE.md` - Comprehensive guide to self-learning and performance features
 - **Decisions:** `DECISIONS/` - ADR (Architecture Decision Records)
 - **Roadmap:** `roadmap.yaml` - Planned features and initiatives
 - **Policy:** `automation_policy.yaml` - Automation rules and thresholds

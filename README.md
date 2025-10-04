@@ -151,7 +151,9 @@ Workflow `release.yml` собирает и публикует пакет при 
 ## Архитектура и ADR
 
 - `ARCHITECTURE.md` — обзор слоёв
-- `DECISIONS/ADR-0001-initial-architecture.md` — фиксация ключевых решений
+- `SELF_LEARNING_GUIDE.md` — руководство по саамообучению и оптимизации
+- `DECISIONS/ADR-0001-initial-architecture.md` — начальная архитектура
+- `DECISIONS/ADR-0002-self-learning-performance.md` — система саамообучения
 
 ## Дорожная карта
 
