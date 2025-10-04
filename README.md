@@ -16,7 +16,7 @@
 - Pre-commit хуки (ruff, black, mypy, pytest)
 - Тестирование (pytest + coverage, порог 85%)
 - CI (GitHub Actions) — matrix (3.11, 3.12, 3.13) + отдельный security job
-- Security сканы: bandit, pip-audit (HIGH), deptry
+- Security сканы: bandit, pip-audit, deptry
 - Automation Policy (`automation_policy.yaml`)
 - Dependabot (pip + actions)
 - Release workflow (build + publish на PyPI по main, требует секрет `PYPI_TOKEN`)
@@ -135,7 +135,7 @@ stats = monitor.get_stats("api_call")
 ## Безопасность
 
 - `bandit` — статический анализ
-- `pip-audit --fail-on HIGH` — уязвимости зависимостей
+- `pip-audit` — уязвимости зависимостей
 - `deptry` — неиспользуемые/скрытые зависимости
 - Планируемое: SBOM (cyclonedx), SAST расширение
 
