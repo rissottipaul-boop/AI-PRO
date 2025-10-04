@@ -45,6 +45,8 @@ jobs:
               with:
                   files: coverage.xml
                   verbose: true
+                  fail_ci_if_error: false
+                  # Token is optional for public repos, but recommended for reliability
                   token: ${{ secrets.CODECOV_TOKEN }}
 
     security:
