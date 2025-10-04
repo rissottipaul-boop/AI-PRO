@@ -1,0 +1,139 @@
+name: Agent Task
+description: Структурированная задача для Copilot агента
+title: "[AGENT] "
+labels: ["agent-task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Задача для автономного агента
+        
+        Используйте этот шаблон для задач, предназначенных для выполнения Copilot coding agent.
+        Агент будет следовать инструкциям из `.github/COPILOT_INSTRUCTIONS.md` и `automation_policy.yaml`.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Контекст / Обоснование
+      description: Почему это нужно? Ссылка на проблему, обсуждение, или цель из roadmap.
+      placeholder: |
+        Например:
+        - Необходимо добавить метрики для отслеживания производительности кэширования
+        - Ссылка: roadmap.yaml, инициатива perf-bench
+        - Цель: снизить время выполнения на 20%
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope (Область изменений)
+      description: |
+        Что ВКЛЮЧЕНО в задачу и что ЯВНО ИСКЛЮЧЕНО.
+        Это помогает агенту понять границы работы.
+      placeholder: |
+        **Включено:**
+        - Добавить класс CacheMetrics в src/autonomous_dev/performance/
+        - Интегрировать с существующим CacheManager
+        - Добавить тесты в tests/test_cache_metrics.py
+        - Обновить ARCHITECTURE.md с описанием метрик
+        
+        **Исключено:**
+        - Изменения в публичном API
+        - Рефакторинг существующего кода кэширования
+        - Добавление новых зависимостей
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria (Критерии приёмки)
+      description: |
+        Измеримый набор условий для определения успешности задачи.
+        Используйте чеклист для ясности.
+      placeholder: |
+        - [ ] Класс CacheMetrics реализован с методами track_hit(), track_miss()
+        - [ ] Интеграция с CacheManager работает без изменения существующего поведения
+        - [ ] Покрытие тестами ≥85%
+        - [ ] Все CI проверки проходят (lint, type, test, security)
+        - [ ] Документация обновлена (docstrings + ARCHITECTURE.md)
+        - [ ] Бенчмарк показывает <1% overhead
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Риски / Edge Cases
+      description: |
+        Возможные проблемы, ограничения, или особые случаи, которые нужно учесть.
+      placeholder: |
+        - Потенциальный race condition при параллельных операциях → использовать thread-safe счётчики
+        - Overhead на метрики не должен превышать 1% → профилирование обязательно
+        - Backward compatibility: существующий код не должен ломаться
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Приоритет
+      description: Насколько срочно выполнение задачи?
+      options:
+        - Low (можно отложить)
+        - Medium (в следующей итерации)
+        - High (критично для текущего спринта)
+        - Critical (блокирующее)
+      default: 1
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Оценка сложности
+      description: Примерная оценка объёма работы
+      options:
+        - XS (< 1 час, < 50 строк)
+        - S (1-2 часа, 50-200 строк)
+        - M (2-4 часа, 200-500 строк)
+        - L (4-8 часов, 500-1000 строк)
+        - XL (> 8 часов, требует разбиения)
+      default: 2
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: requires_review
+    attributes:
+      label: Требует Human Review?
+      description: |
+        Отметьте, если изменения требуют обязательного ревью человеком
+        (см. automation_policy.yaml для критериев)
+      options:
+        - label: Public API change
+        - label: Major version bump
+        - label: ADR modification
+        - label: Security policy change
+        - label: Breaking change
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Дополнительные заметки
+      description: |
+        Любая дополнительная информация: ссылки, обсуждения, ADR, примеры.
+      placeholder: |
+        - Ссылка на PR с похожей задачей: #123
+        - ADR: DECISIONS/0005-cache-strategy.md
+        - Пример использования: https://example.com/docs/metrics
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        **Для агента:** После создания issue прочитайте `.github/COPILOT_INSTRUCTIONS.md` 
+        для полного контекста и следуйте автономному циклу разработки.
+        
+        **Для человека:** Этот шаблон структурирует задачи так, чтобы агент мог работать 
+        максимально автономно при соблюдении всех качественных стандартов.
