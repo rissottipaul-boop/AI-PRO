@@ -100,7 +100,7 @@ ci: add Python 3.14 to test matrix
 
 ### 1. Подготовка (Planning)
 
-- Прочитать `.github/COPILOT_INSTRUCTIONS.md` (этот файл)
+- Прочитать `.github/copilot-instructions.md` (этот файл)
 - Изучить `automation_policy.yaml` — правила автоматизации
 - Просмотреть `roadmap.yaml` — дорожная карта проекта
 - Проверить открытые issues и PR
@@ -236,7 +236,7 @@ ci: add Python 3.14 to test matrix
 ## Key Files & Directories
 
 .github/
-  ├── COPILOT_INSTRUCTIONS.md    ← этот файл
+  ├── copilot-instructions.md    ← этот файл
   ├── ISSUE_TEMPLATE/
   │   ├── agent_task.yml         ← шаблон для задач агента
   │   ├── bug_report.yml

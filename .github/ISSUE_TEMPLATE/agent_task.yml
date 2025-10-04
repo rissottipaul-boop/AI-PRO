@@ -10,7 +10,7 @@ body:
         ## Задача для автономного агента
         
         Используйте этот шаблон для задач, предназначенных для выполнения Copilot coding agent.
-        Агент будет следовать инструкциям из `.github/COPILOT_INSTRUCTIONS.md` и `automation_policy.yaml`.
+        Агент будет следовать инструкциям из `.github/copilot-instructions.md` и `automation_policy.yaml`.
 
   - type: textarea
     id: context
@@ -133,7 +133,7 @@ body:
       value: |
         ---
         
-        **Для агента:** После создания issue прочитайте `.github/COPILOT_INSTRUCTIONS.md` 
+        **Для агента:** После создания issue прочитайте `.github/copilot-instructions.md` 
         для полного контекста и следуйте автономному циклу разработки.
         
         **Для человека:** Этот шаблон структурирует задачи так, чтобы агент мог работать 
