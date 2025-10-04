@@ -37,3 +37,26 @@ htmlcov/
 
 # Misc
 .DS_Store
+
+# SSH keys and secrets
+*.pem
+*.key
+*.pub
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+.ssh/
+*.ppk
+
+# Environment files with secrets
+.env.local
+.env.*.local
+secrets.yml
+secrets.yaml
+*.secret
+*.secrets
+
+# Security scanning results
+.gitleaks-report.json
+gitleaks-report.json
