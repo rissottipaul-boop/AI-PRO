@@ -187,7 +187,11 @@ def test_feedback_loop_suggest_optimizations_refactoring() -> None:
     suggestions = loop.suggest_optimizations({"task_type": "refactoring"})
     assert len(suggestions) > 0
     # Should include refactoring-specific suggestion
-    assert any("refactoring" in s["description"].lower() for s in suggestions)
+    assert any(
+        "refactoring" in str(s["description"]).lower()
+        for s in suggestions
+        if isinstance(s["description"], str)
+    )
 
 
 def test_feedback_loop_high_confidence_suggestions() -> None:
@@ -203,4 +207,5 @@ def test_feedback_loop_high_confidence_suggestions() -> None:
     # All suggestions should have high confidence
     for suggestion in suggestions:
         if "priority" in suggestion:
-            assert suggestion["priority"] >= 0.7
+            priority = suggestion["priority"]
+            assert isinstance(priority, (int, float)) and priority >= 0.7
