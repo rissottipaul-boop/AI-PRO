@@ -12,12 +12,17 @@ All automation infrastructure is **complete and operational**:
 - ✅ Linting clean (Ruff + Black)
 - ✅ Type checking strict (mypy)
 - ✅ CI/CD workflows configured
-- ✅ Security scanning enabled
+- ✅ Security scanning enabled (bandit, pip-audit, deptry)
 - ✅ Coverage reporting (Codecov)
-- ✅ Release automation ready
+- ✅ Release automation ready (PyPI OIDC)
 - ✅ **Self-learning system** (metrics, feedback loops)
 - ✅ **Performance optimization** (caching, profiling, batching)
 - ✅ **Copilot agent instructions** (`.github/COPILOT_INSTRUCTIONS.md`)
+- ✅ **Changelog automation** (git-cliff)
+- ✅ **Semantic versioning enforcement** (check_version.py)
+- ✅ **Nightly extended scans** (security + coverage)
+- ✅ **SBOM generation** (CycloneDX format)
+- ✅ **Dev Container** (consistent development environment)
 
 ## 🔄 Automated Workflows
 
@@ -56,6 +61,45 @@ All automation infrastructure is **complete and operational**:
 - Build Python package
 - Upload artifacts
 - Publish to PyPI (uses OIDC, no token needed)
+
+### 4. Changelog Generation (`.github/workflows/changelog.yml`)
+
+**Triggers:**
+
+- Push to tags matching `v*`
+- Manual dispatch
+
+**Actions:**
+
+- Uses `git-cliff` to generate CHANGELOG.md from conventional commits
+- Configuration in `.gitcliff.toml`
+- Auto-commits and pushes changes back to repository
+
+### 5. Version Check (`.github/workflows/version-check.yml`)
+
+**Triggers:**
+
+- Pull requests to `main`
+
+**Actions:**
+
+- Validates semantic version bump matches commit types
+- Enforces conventional commit → SemVer rules
+- Prevents merges with incorrect version bumps
+
+### 6. Nightly Extended Checks (`.github/workflows/nightly.yml`)
+
+**Triggers:**
+
+- Daily at 2 AM UTC (cron: `0 2 * * *`)
+- Manual dispatch
+
+**Actions:**
+
+- Extended security scans (fails on MEDIUM severity)
+- Full Bandit scan
+- Strict Deptry checks
+- Coverage diff tracking
 
 ## 🛠️ Local Development Tools
 
@@ -248,29 +292,38 @@ results = batch.process_items(items, process_function)
 
 ## 🚀 Next Steps (Optional Enhancements)
 
-These are documented in `roadmap.yaml` but can be implemented:
+These are documented in `roadmap.yaml`. Current implementation status:
 
-1. **Changelog Generation**
-   - Tool: `git-cliff` or `github-changelog-generator`
-   - Trigger: On version bump in `pyproject.toml`
+1. **✅ Changelog Generation (COMPLETED)**
+   - Tool: `git-cliff` (implemented in `.github/workflows/changelog.yml`)
+   - Trigger: On tag push or manual dispatch
+   - Config: `.gitcliff.toml`
 
-2. **Semantic Version Enforcement**
-   - Script to validate version bumps match change type
-   - Conventional commit → SemVer mapping
+2. **✅ Semantic Version Enforcement (COMPLETED)**
+   - Script: `scripts/check_version.py` validates version bumps
+   - Conventional commit → SemVer mapping implemented
+   - Workflow: `.github/workflows/version-check.yml`
 
-3. **Nightly/Weekly Workflows**
-   - Extended security scans
-   - Dependency update checks
-   - Performance regression tests
+3. **✅ Nightly/Weekly Workflows (COMPLETED)**
+   - Extended security scans implemented
+   - Dependency vulnerability checks (fail on MEDIUM)
+   - Coverage diff tracking
+   - Workflow: `.github/workflows/nightly.yml`
 
-4. **Enhanced Badges**
-   - PyPI version badge
-   - License badge
-   - Download statistics
+4. **✅ SBOM Generation (COMPLETED)**
+   - CycloneDX format implemented in CI
+   - Generated on every build
+   - Artifact uploaded for compliance
 
-5. **Dependabot Grouping**
+5. **✅ Enhanced Badges (COMPLETED)**
+   - CI, Nightly, Changelog, Coverage badges in README
+   - License and Python version badges added
+   - SBOM badge included
+
+6. **Dependabot Grouping (OPTIONAL)**
    - Group minor/patch updates
    - Separate major updates for review
+   - Can be configured in `.github/dependabot.yml` if needed
 
 ## 📚 Documentation
 
