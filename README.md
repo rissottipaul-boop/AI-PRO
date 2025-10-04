@@ -90,6 +90,46 @@ pre-commit install
 pre-commit run --all-files
 ```
 
+## VSCode Setup
+
+При открытии проекта в VSCode будут автоматически предложены рекомендуемые расширения:
+
+- GitHub Copilot (для AI-ассистируемой разработки)
+- GitHub Copilot Chat
+- Ruff (линтинг и форматирование)
+- Python
+- Pylance (анализ типов)
+
+### Custom Instructions для GitHub Copilot
+
+Проект настроен на использование файла инструкций вместо workspace settings (см. [документацию](https://aka.ms/vscode-ghcp-custom-instructions)).
+
+**Конфигурация в `.vscode/settings.json`:**
+
+```json
+{
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": ".github/COPILOT_INSTRUCTIONS.md"
+    }
+  ]
+}
+```
+
+Все правила разработки, стандарты качества и ограничения описаны в `.github/COPILOT_INSTRUCTIONS.md`. GitHub Copilot автоматически использует эти инструкции при генерации кода.
+
+### Доступные задачи VSCode
+
+Нажмите `Ctrl+Shift+P` (или `Cmd+Shift+P` на macOS) и выберите `Tasks: Run Task`:
+
+- **Install Dependencies** — установка зависимостей
+- **Run Tests** — запуск тестов
+- **Run Tests with Coverage** — тесты с покрытием
+- **Lint** — проверка кода (ruff + mypy)
+- **Format** — форматирование кода
+- **Pre-commit** — запуск pre-commit хуков
+- **Run All Checks** — все проверки (default build task)
+
 ## Структура
 
 ```text
@@ -101,6 +141,11 @@ tests/                                   # тесты
   └── workflows/
       ├── ci.yml                         # CI pipeline
       └── release.yml                    # Release pipeline
+.vscode/
+  ├── settings.json                      # VSCode настройки (включая Copilot)
+  ├── extensions.json                    # Рекомендуемые расширения
+  ├── tasks.json                         # Задачи для разработки
+  └── launch.json                        # Конфигурация отладки
 automation_policy.yaml                   # Политика автономии
 AUTOMATION_GUIDE.md                      # Гид по автоматизации
 ARCHITECTURE.md                          # Архитектура

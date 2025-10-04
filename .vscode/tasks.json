@@ -1,0 +1,60 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install Dependencies",
+      "type": "shell",
+      "command": "pip install -e .[dev]",
+      "problemMatcher": [],
+      "group": "none"
+    },
+    {
+      "label": "Run Tests",
+      "type": "shell",
+      "command": "pytest",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run Tests with Coverage",
+      "type": "shell",
+      "command": "pytest --cov=src/autonomous_dev --cov-fail-under=85",
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Lint",
+      "type": "shell",
+      "command": "ruff check . && mypy src/autonomous_dev",
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Format",
+      "type": "shell",
+      "command": "ruff format .",
+      "problemMatcher": [],
+      "group": "none"
+    },
+    {
+      "label": "Pre-commit",
+      "type": "shell",
+      "command": "pre-commit run --all-files",
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Run All Checks",
+      "type": "shell",
+      "command": "pre-commit run --all-files && pytest --cov=src/autonomous_dev --cov-fail-under=85",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
