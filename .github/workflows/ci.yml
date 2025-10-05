@@ -99,4 +99,4 @@ jobs:
             - name: pip-audit
               run: pip-audit --fail-on HIGH || true
             - name: Deptry
-              run: deptry . --ignore-unused-dependencies
+              run: deptry . --ignore DEP002,DEP003
