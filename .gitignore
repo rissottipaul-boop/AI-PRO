@@ -38,9 +38,4 @@ htmlcov/
 # Misc
 .DS_Store
 
-# SSH keys (security)
-*.pub
-id_rsa
-id_ed25519
-*.pem
-*.key
+

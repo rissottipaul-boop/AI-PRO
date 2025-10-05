@@ -93,11 +93,66 @@ Common metrics to track:
 
 - `test_duration` - Test execution time
 - `coverage_percent` - Code coverage percentage
-- `lint_errors` - Number of linting errors
+- `lint_errors` - Number of linting errors (tracked for error insights)
+- `test_failures` - Number of test failures (tracked for reliability insights)
+- `build_errors` - Number of build errors (tracked for stability insights)
 - `build_time` - Build duration
 - `ci_duration` - CI pipeline duration
 - `memory_usage` - Memory consumption
 - Custom metrics as needed
+
+#### Error Tracking and Insights
+
+The learning module provides comprehensive error tracking and analysis:
+
+**Error Metrics:**
+- `lint_errors` - Detects code quality issues with 0.95 confidence
+- `test_failures` - Identifies reliability problems with 0.95 confidence
+- `build_errors` - Monitors build stability with 0.95 confidence
+
+**Example:**
+```python
+from autonomous_dev import MetricsTracker
+
+tracker = MetricsTracker()
+
+# Record error metrics
+tracker.record_metric("lint_errors", 3)
+tracker.record_metric("test_failures", 1)
+tracker.record_metric("build_errors", 0)
+
+# Generate insights (automatically includes error analysis)
+insights = tracker.generate_insights()
+
+for insight in insights:
+    if insight.category in ["quality", "reliability"]:
+        print(f"{insight.description}")
+        print(f"Action: {insight.suggested_action}")
+        print(f"Confidence: {insight.confidence}")
+```
+
+**Context-Aware Suggestions:**
+
+The feedback loop provides context-aware error handling suggestions:
+
+```python
+from autonomous_dev import FeedbackLoop, MetricsTracker
+
+tracker = MetricsTracker()
+loop = FeedbackLoop(tracker)
+
+# For debugging tasks
+suggestions = loop.suggest_optimizations({
+    "task_type": "debugging"
+})
+# Suggests: "Add comprehensive error logging and track error metrics"
+
+# For high complexity tasks
+suggestions = loop.suggest_optimizations({
+    "complexity": "high"
+})
+# Suggests: "Implement robust error handling and validation"
+```
 
 ### 2. Performance Module (`autonomous_dev/performance.py`)
 
