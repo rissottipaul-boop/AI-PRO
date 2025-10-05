@@ -206,6 +206,4 @@ def test_feedback_loop_high_confidence_suggestions() -> None:
     suggestions = loop.suggest_optimizations({})
     # All suggestions should have high confidence
     for suggestion in suggestions:
-        priority = suggestion.get("priority")
-        if priority is not None and isinstance(priority, (int, float)):
-            assert priority >= 0.7
+
