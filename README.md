@@ -13,7 +13,7 @@
 
 - Automation Policy (`automation_policy.yaml`)
 - Dependabot (pip + actions)
-
+- Release workflow (build + publish на PyPI по main через OIDC trusted publishing)
 - Makefile и PowerShell скрипт для Windows
 - VSCode задачи и настройки
 - ADR и архитектурная документация
@@ -119,7 +119,7 @@ pre-commit run --all-files
 
 ## Релизы
 
-
+Workflow `release.yml` собирает и публикует пакет при изменении `pyproject.toml` в ветке `main` через OIDC trusted publishing (не требует секретов).
 
 ## Архитектура и ADR
 
