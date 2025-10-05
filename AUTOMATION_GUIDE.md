@@ -132,7 +132,6 @@ Defined in `automation_policy.yaml`:
 - Test-only changes
 
 **Requires Review:**
-
 - Public API changes
 - Major version bumps
 - ADR modifications
@@ -167,7 +166,6 @@ Defined in `automation_policy.yaml`:
 ### Status Badges
 
 All visible in README:
-
 - CI Status
 - Code Coverage (Codecov)
 - Python Version
@@ -205,21 +203,18 @@ pre-commit run --all-files
 ```
 
 **Tests fail:**
-
 ```bash
 pytest -v  # Verbose output
 pytest --lf  # Run last failed
 ```
 
 **Lint errors:**
-
 ```bash
 ruff check . --fix  # Auto-fix where possible
 ruff format .       # Format code
 ```
 
 **Type errors:**
-
 ```bash
 mypy src/autonomous_dev --show-error-codes
 ```

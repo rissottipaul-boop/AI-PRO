@@ -28,7 +28,8 @@
                 "ms-python.vscode-pylance",
                 "charliermarsh.ruff",
                 "ms-azuretools.vscode-docker",
-                "github.vscode-github-actions"
+                "github.vscode-github-actions",
+                "ms-azuretools.vscode-containers"
             ],
             "settings": {
                 "python.defaultInterpreterPath": "/workspace/.venv/bin/python",

@@ -10,7 +10,6 @@ body:
   - type: textarea
     id: context
     attributes:
-      label: Контекст / Обоснование
 
     validations:
       required: true
@@ -26,73 +25,13 @@ body:
     id: acceptance
     attributes:
 
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Приоритет
-
-      default: 1
     validations:
       required: true
 
-  - type: dropdown
-
-      placeholder: |
-        Зависит от:
-        - #123 должен быть закрыт первым
-        - ADR-0003 должен быть утверждён
-        
-        Блокирует:
-        - #456
-    validations:
-      required: false
-
-  - type: input
-    id: estimated_time
-    attributes:
-      label: Оценка времени
-      description: Примерное время выполнения (опционально)
-      placeholder: "2h, 1d, 3d"
-    validations:
-      required: false
-
   - type: textarea
-    id: notes
+    id: acceptance
     attributes:
-      label: Дополнительные заметки
-      description: |
-        Любая дополнительная информация:
-        - Ссылки на примеры кода
-        - Ссылки на внешние ресурсы
-        - Особые инструкции для агента
-      placeholder: |
-        Полезные ссылки:
-        - Похожая реализация: https://github.com/example/repo
-        - Документация API: https://docs.example.com
-        
-        Особые требования:
-        - Использовать asyncio для операций I/O
-        - Следовать паттерну из existing_module.py
-    validations:
-      required: false
 
-  - type: checkboxes
-    id: agent_checklist
-    attributes:
-      label: Pre-flight checklist
-      description: Убедитесь, что задача готова для агента
-      options:
-        - label: Задача чётко сформулирована и атомарна
-          required: true
-        - label: Критерии приёмки измеримы
-          required: true
-        - label: Область изменений определена (scope)
-          required: true
-        - label: Прочитаны `.github/COPILOT_INSTRUCTIONS.md` и `automation_policy.yaml`
-          required: false
-        - label: Связанная документация обновлена (если нужно)
-          required: false
-=======
     id: complexity
     attributes:
       label: Оценка сложности
@@ -124,65 +63,35 @@ body:
   - type: textarea
     id: notes
     attributes:
-      label: Дополнительные заметки
-      description: |
-        Любая дополнительная информация: ссылки, обсуждения, ADR, примеры.
-      placeholder: |
-        - Ссылка на PR с похожей задачей: #123
-        - ADR: DECISIONS/0005-cache-strategy.md
-        - Пример использования: https://example.com/docs/metrics
-
-  - type: markdown
-    attributes:
-      value: |
-        ---
-        
-        **Для агента:** После создания issue прочитайте `.github/COPILOT_INSTRUCTIONS.md` 
-        для полного контекста и следуйте автономному циклу разработки.
-        
-        **Для человека:** Этот шаблон структурирует задачи так, чтобы агент мог работать 
-        максимально автономно при соблюдении всех качественных стандартов.
 =======
-description: Structured task for Copilot agent
-labels: ["agent-task"]
-title: "agent: <кратко>"
-body:
-  - type: textarea
-    id: context
-    attributes:
-      label: Context / Rationale
-      description: Почему это нужно? Ссылки на исходные обсуждения / проблемы.
-      placeholder: >-
-        Кратко зачем. Ссылка на issue/ADR/roadmap пункт.
-    validations:
-      required: true
-  - type: textarea
-    id: scope
-    attributes:
-      label: Scope (In / Out)
-      description: Что включено и что явно исключено.
-      placeholder: >-
-        In: ...\nOut: ...
-    validations:
-      required: true
-  - type: textarea
-    id: acceptance
-    attributes:
-      label: Acceptance Criteria
-      description: Проверяемые условия завершения (тесты, файлы, показатели).
-      placeholder: >-
-        - Тесты добавлены\n- Покрытие не ниже ...\n- Нет новых mypy ошибок
-    validations:
-      required: true
-  - type: textarea
-    id: risks
-    attributes:
-      label: Risks / Edge Cases
-      description: Какие риски и как их минимизировать.
-  - type: textarea
-    id: notes
-    attributes:
       label: Additional Notes
-      description: ADR, ссылки, наброски.
->>>>>>> Stashed changes
->>>>>>> copilot/fix-ceecdf58-182b-4ca5-918c-d8a68775e055
+      description: |
+        Дополнительная информация, ссылки, ADR, обсуждения.
+      placeholder: |
+        - См. ARCHITECTURE.md для понимания структуры
+        - Проверьте automation_policy.yaml для правил
+        - Связанные issue: #123, #456
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+
+
+=======
+      label: Agent Checklist
+      description: Проверки для агента перед закрытием задачи
+      options:
+        - label: Код соответствует стандартам (ruff + black + mypy)
+          required: false
+        - label: Тесты добавлены/обновлены
+          required: false
+        - label: Покрытие >= 85%
+          required: false
+        - label: CI проходит успешно
+          required: false
+        - label: Документация обновлена
+          required: false
+        - label: Pre-commit hooks проходят
+          required: false
+
+>
