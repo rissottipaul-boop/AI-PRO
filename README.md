@@ -118,11 +118,12 @@ roadmap.yaml                             # Дорожная карта
 1. **Plan** — анализ задач из roadmap/issues
 2. **Implement** — минимальные, атомарные изменения
 3. **Validate** — локальные проверки (lint + test)
-4. **Commit** — следуя Conventional Commits
-5. **CI Validation** — GitHub Actions проверяет всё
+4. **Commit** — следуя Conventional Commits (автопроверка semantic version)
+5. **CI Validation** — GitHub Actions проверяет всё (включая SBOM generation)
 6. **Review** — человек только для high-impact
 7. **Merge** — авто или manual (см. `automation_policy.yaml`)
-8. **Release** — автоматический при bump версии
+8. **Release** — автоматический при bump версии (с автогенерацией changelog)
+9. **Changelog** — автоматическое обновление через git-cliff при создании тега
 
 ## Политика автоматизации
 
@@ -136,9 +137,11 @@ roadmap.yaml                             # Дорожная карта
 ## Безопасность
 
 - `bandit` — статический анализ
-- `pip-audit --fail-on HIGH` — уязвимости зависимостей
+- `pip-audit --fail-on HIGH` — уязвимости зависимостей (CI)
+- `pip-audit --fail-on MEDIUM` — расширенное сканирование (nightly)
 - `deptry` — неиспользуемые/скрытые зависимости
-- Планируемое: SBOM (cyclonedx), SAST расширение
+- ✅ SBOM (CycloneDX) — генерация при каждой сборке
+- Планируемое: License compliance checking, расширенный SAST
 
 ## Обновления зависимостей
 
@@ -167,14 +170,17 @@ Workflow `release.yml` собирает и публикует пакет при 
 - **[Architecture](ARCHITECTURE.md)** — архитектура системы
 - **[Roadmap](roadmap.yaml)** — дорожная карта
 
-## Расширения (потенциал)
+## Расширения (реализовано и потенциал)
 
-- ✅ Devcontainer + Dockerfile
+- ✅ Devcontainer + Dockerfile (реализовано)
 - ✅ Conventional commits (реализовано)
-- Автогенерация changelog (git-cliff / github-changelog-generator)
-- SBOM + лицензии
-- ChatOps команды (slash /qa /security)
-- Performance benchmarks
+- ✅ Автогенерация changelog (git-cliff) (реализовано)
+- ✅ Semantic version bump validation (реализовано)
+- ✅ SBOM generation (CycloneDX) (реализовано)
+- ✅ Nightly extended security scans (реализовано)
+- [ ] License compliance checking (планируется)
+- [ ] ChatOps команды (slash /qa /security) (планируется)
+- [ ] Advanced performance benchmarks with ML (планируется)
 
 ## Dev Container
 
