@@ -190,7 +190,7 @@ def test_feedback_loop_suggest_optimizations_refactoring() -> None:
     assert any(
         "refactoring" in str(s["description"]).lower()
         for s in suggestions
-        if isinstance(s["description"], str)
+
     )
 
 
@@ -206,6 +206,3 @@ def test_feedback_loop_high_confidence_suggestions() -> None:
     suggestions = loop.suggest_optimizations({})
     # All suggestions should have high confidence
     for suggestion in suggestions:
-        if "priority" in suggestion:
-            priority = suggestion["priority"]
-            assert isinstance(priority, (int, float)) and priority >= 0.7

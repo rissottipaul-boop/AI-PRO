@@ -31,6 +31,7 @@ dist/
 .coverage*
 htmlcov/
 .coverage
+coverage.xml
 
 # Ruff
 .ruff_cache/
@@ -38,8 +39,4 @@ htmlcov/
 # Misc
 .DS_Store
 
-# SSH keys (never commit)
-*.pub
-id_*
-*ssh-ed25519*
-*ssh-rsa*
+
