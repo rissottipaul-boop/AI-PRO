@@ -253,8 +253,6 @@ DECISIONS/                       ← ADR (Architecture Decision Records)
 src/autonomous_dev/              ← исходный код
 tests/                           ← тесты
 
-```
-
 ## References
 
 - [Ruff Documentation](https://docs.astral.sh/ruff/)
