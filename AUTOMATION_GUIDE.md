@@ -17,12 +17,6 @@ All automation infrastructure is **complete and operational**:
 - ✅ Release automation ready (PyPI OIDC)
 - ✅ **Self-learning system** (metrics, feedback loops)
 - ✅ **Performance optimization** (caching, profiling, batching)
-- ✅ **Copilot agent instructions** (`.github/COPILOT_INSTRUCTIONS.md`)
-- ✅ **Changelog automation** (git-cliff)
-- ✅ **Semantic versioning enforcement** (check_version.py)
-- ✅ **Nightly extended scans** (security + coverage)
-- ✅ **SBOM generation** (CycloneDX format)
-- ✅ **Dev Container** (consistent development environment)
 
 ## 🔄 Automated Workflows
 
@@ -214,7 +208,7 @@ Defined in `automation_policy.yaml`:
 
 Complete instructions for autonomous agents are in:
 
-- `.github/COPILOT_INSTRUCTIONS.md` - Main agent contract
+- `.github/copilot-instructions.md` - Main agent contract
 - `.github/ISSUE_TEMPLATE/agent_task.yml` - Structured task template
 - `automation_policy.yaml` - Automation rules
 
@@ -328,7 +322,7 @@ These are documented in `roadmap.yaml`. Current implementation status:
 ## 📚 Documentation
 
 - **Architecture:** `ARCHITECTURE.md` - System design and principles
-- **Agent Instructions:** `.github/COPILOT_INSTRUCTIONS.md` - Complete agent contract
+- **Agent Instructions:** `.github/copilot-instructions.md` - Complete agent contract
 - **Decisions:** `DECISIONS/` - ADR (Architecture Decision Records)
 - **Roadmap:** `roadmap.yaml` - Planned features and initiatives
 - **Policy:** `automation_policy.yaml` - Automation rules and thresholds
@@ -393,4 +387,4 @@ If coverage falls below 85%:
 
 **Status:** ✅ Infrastructure complete and operational  
 **Last Updated:** 2025-10-04  
-**Agent Ready:** Yes - See `.github/COPILOT_INSTRUCTIONS.md`
+**Agent Ready:** Yes - See `.github/copilot-instructions.md`
