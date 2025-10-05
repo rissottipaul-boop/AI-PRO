@@ -138,7 +138,8 @@ roadmap.yaml                             # Дорожная карта
 - `bandit` — статический анализ
 - `pip-audit --fail-on HIGH` — уязвимости зависимостей
 - `deptry` — неиспользуемые/скрытые зависимости
-- Планируемое: SBOM (cyclonedx), SAST расширение
+- ✅ SBOM (CycloneDX) — генерируется в CI для каждого билда
+- Планируемое: расширенный SAST
 
 ## Обновления зависимостей
 
@@ -171,8 +172,10 @@ Workflow `release.yml` собирает и публикует пакет при 
 
 - ✅ Devcontainer + Dockerfile
 - ✅ Conventional commits (реализовано)
-- Автогенерация changelog (git-cliff / github-changelog-generator)
-- SBOM + лицензии
+- ✅ Автогенерация changelog (git-cliff реализован)
+- ✅ SBOM (CycloneDX в CI)
+- ✅ Nightly workflow (расширенные проверки)
+- ✅ Version checking (семантическая валидация)
 - ChatOps команды (slash /qa /security)
 - Performance benchmarks
 
