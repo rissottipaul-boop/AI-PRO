@@ -8,9 +8,8 @@ This repository is set up with a complete automation infrastructure for AI-assis
 
 All automation infrastructure is **complete and operational**:
 
-- ✅ Tests passing (96%+ coverage)
+- ✅ Tests passing (100% coverage)
 - ✅ Linting clean (Ruff + Black)
-- ✅ Super-Linter integration (v8.2.0)
 - ✅ Type checking strict (mypy)
 - ✅ CI/CD workflows configured
 - ✅ Security scanning enabled
@@ -18,6 +17,7 @@ All automation infrastructure is **complete and operational**:
 - ✅ Release automation ready
 - ✅ **Self-learning system** (metrics, feedback loops)
 - ✅ **Performance optimization** (caching, profiling, batching)
+- ✅ **Copilot agent instructions** (`.github/COPILOT_INSTRUCTIONS.md`)
 
 ## 🔄 Automated Workflows
 
@@ -28,6 +28,7 @@ All automation infrastructure is **complete and operational**:
 **Matrix Testing:** Python 3.11, 3.12, 3.13
 
 **Steps:**
+
 - Pre-commit hooks validation
 - Linting (Ruff)
 - Code formatting (Ruff format, Black)
@@ -35,32 +36,23 @@ All automation infrastructure is **complete and operational**:
 - Unit tests with coverage (pytest)
 - Coverage upload to Codecov
 
-### 2. Super-Linter (in CI workflow)
-
-**Purpose:** Comprehensive multi-language linting
-
-**Configuration:**
-- Uses Super-Linter v8.2.0
-- Validates only changed files (VALIDATE_ALL_CODEBASE: false)
-- Configured to use Ruff for Python linting
-- Disabled redundant linters (Black, Flake8, Pylint, isort, mypy) to avoid conflicts with existing tooling
-
-### 3. Security Scanning (in CI workflow)
+### 2. Security Scanning (in CI workflow)
 
 **Automated Checks:**
-- `gitleaks` - Secret and credential detection (pre-commit + CI)
-- `CodeQL` - Advanced semantic code analysis (scheduled weekly)
+
 - `bandit` - Static security analysis
-- `pip-audit` - Dependency vulnerability scanning
+- `pip-audit` - Dependency vulnerability scanning (fails on HIGH)
 - `deptry` - Unused/missing dependency detection
 
+### 3. Release Workflow (`.github/workflows/release.yml`)
 
+**Triggers:**
 
-**Triggers:** 
 - Manual dispatch
 - Push to `main` when `pyproject.toml` changes
 
 **Actions:**
+
 - Build Python package
 - Upload artifacts
 - Publish to PyPI (uses OIDC, no token needed)
@@ -100,11 +92,6 @@ pwsh -File scripts/dev.ps1 -All
 
 ### Pre-commit Hooks
 
-Pre-commit hooks automatically run before each commit:
-- Code formatting (ruff, black)
-- Type checking (mypy)
-- Secret scanning (gitleaks)
-
 ```bash
 # Install hooks
 pre-commit install
@@ -116,24 +103,28 @@ pre-commit run --all-files
 ## 📊 Quality Gates
 
 ### Coverage Requirements
+
 - **Target:** 85% minimum (configured in `pyproject.toml`)
 - **Current:** 100%
 - **Reporting:** Codecov integration enabled
 
 ### Lint & Format
+
 - **Ruff:** 0 errors required
 - **Black:** Consistent formatting enforced
 - **Line length:** 100 characters
 
 ### Type Safety
+
 - **mypy:** Strict mode enabled
 - **Python:** 3.11+ required
 
 ## 🔐 Security Policy
 
 ### Dependency Management
+
 - **Dependabot:** Weekly automated PR for pip and GitHub Actions
-- **pip-audit:** Scans for dependency vulnerabilities
+- **pip-audit:** Fails CI on HIGH severity vulnerabilities
 - **bandit:** Scans for common security issues
 
 ### Safe Auto-merge Policy
@@ -141,6 +132,7 @@ pre-commit run --all-files
 Defined in `automation_policy.yaml`:
 
 **Auto-mergeable:**
+
 - Dev dependency patch updates
 - Formatting/lint fixes
 - Test-only changes
@@ -158,7 +150,7 @@ Defined in `automation_policy.yaml`:
 1. **Plan:** Analyze tasks from roadmap/issues
 2. **Implement:** Make minimal, focused changes
 3. **Validate:** Run local checks (lint + test)
-4. **Commit:** Push changes to PR
+4. **Commit:** Push changes to PR (following Conventional Commits)
 5. **CI Validation:** GitHub Actions verify all checks
 6. **Review:** Human review only for high-impact changes
 7. **Merge:** Auto or manual merge based on policy
@@ -193,6 +185,55 @@ All visible in README:
 ## 🧠 Self-Learning Features
 
 ### Metrics Tracking
+
+The system includes a `MetricsTracker` that records:
+
+- Operation execution times
+- Success/failure rates
+- Performance trends over time
+
+```python
+from autonomous_dev.learning import MetricsTracker
+
+tracker = MetricsTracker()
+tracker.record_metric("cache_hit", 0.95)
+tracker.record_metric("response_time", 0.023)
+```
+
+### Feedback Loops
+
+The `FeedbackLoop` component enables:
+
+- Analysis of performance data
+- Generation of actionable insights
+- Automatic strategy adjustments
+
+```python
+from autonomous_dev.learning import FeedbackLoop
+
+loop = FeedbackLoop(tracker)
+insights = loop.analyze_and_generate_insights()
+# Returns LearningInsight objects with recommendations
+```
+
+### Performance Optimization
+
+Built-in optimization strategies:
+
+- **Caching:** Results caching with configurable TTL
+- **Profiling:** Performance profiling with context managers
+- **Batching:** Batch processing for bulk operations
+
+```python
+from autonomous_dev.performance import CacheManager, BatchProcessor
+
+# Caching
+cache = CacheManager()
+result = cache.get_or_compute("key", lambda: expensive_operation())
+
+# Batch processing
+batch = BatchProcessor()
+results = batch.process_items(items, process_function)
 - **MetricsTracker**: Records and analyzes development metrics
 - **Persistent storage**: Optional JSON-based metric history
 - **Trend analysis**: Identifies patterns over time
@@ -230,29 +271,34 @@ def expensive_function(x):
 
 ## 🚀 Next Steps (Optional Enhancements)
 
-The infrastructure is complete and functional. Future optional improvements:
+These are documented in `roadmap.yaml` but can be implemented:
 
-### Phase 1: Enhanced Automation
-- [x] Self-learning and performance optimization (COMPLETED 2025-10-04)
-- [ ] Automatic changelog generation (git-cliff)
-- [ ] Semantic version bump automation
-- [ ] Nightly workflow for long-running scans
+1. **Changelog Generation**
+   - Tool: `git-cliff` or `github-changelog-generator`
+   - Trigger: On version bump in `pyproject.toml`
 
-### Phase 2: Expanded Coverage
-- [ ] SBOM generation (CycloneDX)
-- [ ] License compliance checking
-- [ ] Advanced performance benchmarks with ML predictions
+2. **Semantic Version Enforcement**
+   - Script to validate version bumps match change type
+   - Conventional commit → SemVer mapping
 
-### Phase 3: Advanced Features
-- [ ] Devcontainer for consistent environments
-- [ ] ChatOps commands (slash commands)
-- [ ] Automated dependency grouping
-- [ ] Distributed metrics collection
+3. **Nightly/Weekly Workflows**
+   - Extended security scans
+   - Dependency update checks
+   - Performance regression tests
+
+4. **Enhanced Badges**
+   - PyPI version badge
+   - License badge
+   - Download statistics
+
+5. **Dependabot Grouping**
+   - Group minor/patch updates
+   - Separate major updates for review
 
 ## 📚 Documentation
 
 - **Architecture:** `ARCHITECTURE.md` - System design and principles
-- **Self-Learning:** `SELF_LEARNING_GUIDE.md` - Comprehensive guide to self-learning and performance features
+- **Agent Instructions:** `.github/COPILOT_INSTRUCTIONS.md` - Complete agent contract
 - **Decisions:** `DECISIONS/` - ADR (Architecture Decision Records)
 - **Roadmap:** `roadmap.yaml` - Planned features and initiatives
 - **Policy:** `automation_policy.yaml` - Automation rules and thresholds
@@ -262,6 +308,7 @@ The infrastructure is complete and functional. Future optional improvements:
 ### Common Issues
 
 **Pre-commit fails:**
+
 ```bash
 pre-commit clean
 pre-commit run --all-files
@@ -284,6 +331,21 @@ ruff format .       # Format code
 mypy src/autonomous_dev --show-error-codes
 ```
 
+### CI Failures
+
+1. Check the specific job that failed
+2. Review the error message
+3. Reproduce locally with same Python version
+4. Fix and push again
+
+### Coverage Drops
+
+If coverage falls below 85%:
+
+1. Identify uncovered lines: `pytest --cov --cov-report=html`
+2. Add tests for new code
+3. Consider if certain code should be excluded (e.g., `# pragma: no cover`)
+
 ## 🎓 References
 
 - [Ruff Documentation](https://docs.astral.sh/ruff/)
@@ -291,8 +353,11 @@ mypy src/autonomous_dev --show-error-codes
 - [mypy Documentation](https://mypy.readthedocs.io/)
 - [GitHub Actions](https://docs.github.com/en/actions)
 - [Codecov](https://docs.codecov.com/)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [Semantic Versioning](https://semver.org/)
 
 ---
 
-**Status:** ✅ Infrastructure complete and operational
-**Last Updated:** 2025-10-04
+**Status:** ✅ Infrastructure complete and operational  
+**Last Updated:** 2025-10-04  
+**Agent Ready:** Yes - See `.github/COPILOT_INSTRUCTIONS.md`

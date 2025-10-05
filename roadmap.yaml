@@ -1,19 +1,15 @@
 quarters:
-  Q4-2025:
-    - id: sec-hardening
-      title: Усиление безопасности
-      outcome: CI security качество без ложных срабатываний
-    - id: rel-automation
-      title: Автоматизация релизов
-      outcome: Теги и релизы без ручных шагов
-    - id: self-learning
-      title: Саамообучаемость и производительность
-      outcome: Система метрик, обратная связь, оптимизация производительности
-      status: completed
-  Q1-2026:
-    - id: api-stable
-      title: Стабилизация публичного API
-      outcome: SemVer + контрактные тесты
+    Q4-2025:
+        - id: sec-hardening
+          title: Усиление безопасности
+          outcome: CI security качество без ложных срабатываний
+        - id: rel-automation
+          title: Автоматизация релизов
+          outcome: Теги и релизы без ручных шагов
+    Q1-2026:
+        - id: api-stable
+          title: Стабилизация публичного API
+          outcome: SemVer + контрактные тесты
 
 completed:
   - id: self-learning-system
@@ -30,7 +26,9 @@ completed:
     completion_date: 2025-10-04
 
 backlog:
-  - id: devcontainer
-    title: Dev контейнер среда
-  - id: advanced-perf-bench
-    title: Расширенные бенчмарки производительности
+    - id: devcontainer
+      title: Dev контейнер среда
+    - id: perf-bench
+      title: Бенчмарки производительности
+
+    # Removed misplaced GitHub Actions step definition
