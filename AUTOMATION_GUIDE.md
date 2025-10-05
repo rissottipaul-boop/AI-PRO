@@ -13,11 +13,7 @@ All automation infrastructure is **complete and operational**:
 - ✅ Type checking strict (mypy)
 - ✅ CI/CD workflows configured
 - ✅ Security scanning enabled
-- ✅ Coverage reporting (Codecov)
-- ✅ Release automation ready
-- ✅ **Self-learning system** (metrics, feedback loops)
-- ✅ **Performance optimization** (caching, profiling, batching)
-- ✅ **Copilot agent instructions** (`.github/COPILOT_INSTRUCTIONS.md`)
+
 
 ## 🔄 Automated Workflows
 
@@ -34,7 +30,7 @@ All automation infrastructure is **complete and operational**:
 - Code formatting (Ruff format, Black)
 - Type checking (mypy)
 - Unit tests with coverage (pytest)
-- Coverage upload to Codecov
+
 
 ### 2. Security Scanning (in CI workflow)
 
@@ -46,7 +42,6 @@ All automation infrastructure is **complete and operational**:
 
 ### 3. Release Workflow (`.github/workflows/release.yml`)
 
-**Triggers:**
 
 - Manual dispatch
 - Push to `main` when `pyproject.toml` changes
@@ -110,7 +105,6 @@ pre-commit run --all-files
 
 ### Lint & Format
 
-- **Ruff:** 0 errors required
 - **Black:** Consistent formatting enforced
 - **Line length:** 100 characters
 
@@ -151,7 +145,7 @@ Defined in `automation_policy.yaml`:
 1. **Plan:** Analyze tasks from roadmap/issues
 2. **Implement:** Make minimal, focused changes
 3. **Validate:** Run local checks (lint + test)
-4. **Commit:** Push changes to PR (following Conventional Commits)
+
 5. **CI Validation:** GitHub Actions verify all checks
 6. **Review:** Human review only for high-impact changes
 7. **Merge:** Auto or manual merge based on policy
@@ -166,13 +160,7 @@ Defined in `automation_policy.yaml`:
 - **Self-Learning:** Track metrics and learn from patterns
 - **Optimized:** Cache results and optimize operations automatically
 
-### Agent Instructions
 
-Complete instructions for autonomous agents are in:
-
-- `.github/COPILOT_INSTRUCTIONS.md` - Main agent contract
-- `.github/ISSUE_TEMPLATE/agent_task.yml` - Structured task template
-- `automation_policy.yaml` - Automation rules
 
 ## 📈 Metrics & Monitoring
 
@@ -196,86 +184,11 @@ All visible in README:
 
 ### Metrics Tracking
 
-The system includes a `MetricsTracker` that records:
-
-- Operation execution times
-- Success/failure rates
-- Performance trends over time
-
-```python
-from autonomous_dev.learning import MetricsTracker
-
-tracker = MetricsTracker()
-tracker.record_metric("cache_hit", 0.95)
-tracker.record_metric("response_time", 0.023)
-```
-
-### Feedback Loops
-
-The `FeedbackLoop` component enables:
-
-- Analysis of performance data
-- Generation of actionable insights
-- Automatic strategy adjustments
-
-```python
-from autonomous_dev.learning import FeedbackLoop
-
-loop = FeedbackLoop(tracker)
-insights = loop.analyze_and_generate_insights()
-# Returns LearningInsight objects with recommendations
-```
-
-### Performance Optimization
-
-Built-in optimization strategies:
-
-- **Caching:** Results caching with configurable TTL
-- **Profiling:** Performance profiling with context managers
-- **Batching:** Batch processing for bulk operations
-
-```python
-from autonomous_dev.performance import CacheManager, BatchProcessor
-
-# Caching
-cache = CacheManager()
-result = cache.get_or_compute("key", lambda: expensive_operation())
-
-# Batch processing
-batch = BatchProcessor()
-results = batch.process_items(items, process_function)
-```
-
-## 🚀 Next Steps (Optional Enhancements)
-
-These are documented in `roadmap.yaml` but can be implemented:
-
-1. **Changelog Generation**
-   - Tool: `git-cliff` or `github-changelog-generator`
-   - Trigger: On version bump in `pyproject.toml`
-
-2. **Semantic Version Enforcement**
-   - Script to validate version bumps match change type
-   - Conventional commit → SemVer mapping
-
-3. **Nightly/Weekly Workflows**
-   - Extended security scans
-   - Dependency update checks
-   - Performance regression tests
-
-4. **Enhanced Badges**
-   - PyPI version badge
-   - License badge
-   - Download statistics
-
-5. **Dependabot Grouping**
-   - Group minor/patch updates
-   - Separate major updates for review
 
 ## 📚 Documentation
 
 - **Architecture:** `ARCHITECTURE.md` - System design and principles
-- **Agent Instructions:** `.github/COPILOT_INSTRUCTIONS.md` - Complete agent contract
+
 - **Decisions:** `DECISIONS/` - ADR (Architecture Decision Records)
 - **Roadmap:** `roadmap.yaml` - Planned features and initiatives
 - **Policy:** `automation_policy.yaml` - Automation rules and thresholds
@@ -311,20 +224,6 @@ ruff format .       # Format code
 mypy src/autonomous_dev --show-error-codes
 ```
 
-### CI Failures
-
-1. Check the specific job that failed
-2. Review the error message
-3. Reproduce locally with same Python version
-4. Fix and push again
-
-### Coverage Drops
-
-If coverage falls below 85%:
-
-1. Identify uncovered lines: `pytest --cov --cov-report=html`
-2. Add tests for new code
-3. Consider if certain code should be excluded (e.g., `# pragma: no cover`)
 
 ## 🎓 References
 
@@ -334,10 +233,8 @@ If coverage falls below 85%:
 - [GitHub Actions](https://docs.github.com/en/actions)
 - [Codecov](https://docs.codecov.com/)
 - [Conventional Commits](https://www.conventionalcommits.org/)
-- [Semantic Versioning](https://semver.org/)
+
 
 ---
 
 **Status:** ✅ Infrastructure complete and operational  
-**Last Updated:** 2025-10-04  
-**Agent Ready:** Yes - See `.github/COPILOT_INSTRUCTIONS.md`
