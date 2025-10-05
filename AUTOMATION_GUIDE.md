@@ -138,7 +138,6 @@ Defined in `automation_policy.yaml`:
 - Test-only changes
 
 **Requires Review:**
-
 - Public API changes
 - Major version bumps
 - ADR modifications
@@ -166,20 +165,11 @@ Defined in `automation_policy.yaml`:
 - **Self-Learning:** Track metrics and learn from patterns
 - **Optimized:** Cache results and optimize operations automatically
 
-### Agent Instructions
-
-Complete instructions for autonomous agents are in:
-
-- `.github/COPILOT_INSTRUCTIONS.md` - Main agent contract
-- `.github/ISSUE_TEMPLATE/agent_task.yml` - Structured task template
-- `automation_policy.yaml` - Automation rules
-
 ## 📈 Metrics & Monitoring
 
 ### Status Badges
 
 All visible in README:
-
 - CI Status
 - Code Coverage (Codecov)
 - Python Version
@@ -244,6 +234,39 @@ result = cache.get_or_compute("key", lambda: expensive_operation())
 # Batch processing
 batch = BatchProcessor()
 results = batch.process_items(items, process_function)
+- **MetricsTracker**: Records and analyzes development metrics
+- **Persistent storage**: Optional JSON-based metric history
+- **Trend analysis**: Identifies patterns over time
+
+### Feedback Loops
+- **FeedbackLoop**: Evaluates iterations and suggests improvements
+- **Confidence scores**: Each insight has a confidence level
+- **Context-aware**: Adapts suggestions to task type
+
+### Performance Optimization
+- **Profiling**: `@timed` decorator tracks execution time
+- **Caching**: `@cached` decorator with LRU eviction
+- **Batching**: Automatic batching for large datasets
+- **Parallelization**: Smart detection of when to parallelize
+
+Example usage:
+```python
+from autonomous_dev import MetricsTracker, FeedbackLoop
+from autonomous_dev import timed, cached
+
+# Track metrics
+tracker = MetricsTracker()
+tracker.record_metric("test_duration", 12.5)
+
+# Get insights
+loop = FeedbackLoop(tracker)
+suggestions = loop.suggest_optimizations({"task_type": "testing"})
+
+# Optimize with decorators
+@timed("heavy_computation")
+@cached(max_size=100)
+def expensive_function(x):
+    return x ** 2
 ```
 
 ## 🚀 Next Steps (Optional Enhancements)
@@ -292,21 +315,18 @@ pre-commit run --all-files
 ```
 
 **Tests fail:**
-
 ```bash
 pytest -v  # Verbose output
 pytest --lf  # Run last failed
 ```
 
 **Lint errors:**
-
 ```bash
 ruff check . --fix  # Auto-fix where possible
 ruff format .       # Format code
 ```
 
 **Type errors:**
-
 ```bash
 mypy src/autonomous_dev --show-error-codes
 ```

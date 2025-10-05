@@ -11,6 +11,20 @@ quarters:
           title: Стабилизация публичного API
           outcome: SemVer + контрактные тесты
 
+completed:
+  - id: self-learning-system
+    title: Система саамообучения
+    description: Метрики, анализ трендов, генерация инсайтов
+    completion_date: 2025-10-04
+  - id: performance-optimization
+    title: Оптимизация производительности
+    description: Профилирование, кэширование, батчинг операций
+    completion_date: 2025-10-04
+  - id: feedback-loops
+    title: Циклы обратной связи
+    description: Автоматическая оценка итераций и предложения по улучшению
+    completion_date: 2025-10-04
+
 backlog:
     - id: devcontainer
       title: Dev контейнер среда

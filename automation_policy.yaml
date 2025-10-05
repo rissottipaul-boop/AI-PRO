@@ -9,6 +9,8 @@ allow:
   - format-code
   - regenerate-readme-toc
   - security-audit-reports
+  - performance-optimizations
+  - self-learning-updates
 
 require_review:
   - public-api-change
@@ -26,4 +28,22 @@ pip_audit:
 labels_mapping:
   security: ["security", "vulnerability"]
   maintenance: ["chore", "refactor"]
+  performance: ["performance", "optimization"]
+  learning: ["self-learning", "metrics"]
+
+# Self-learning configuration
+self_learning:
+  enabled: true
+  metrics_tracking: true
+  feedback_loop: true
+  adaptive_thresholds: true
+  
+# Performance optimization
+performance:
+  enable_caching: true
+  cache_size: 100
+  enable_profiling: true
+  batch_size: 100
+  parallelization_threshold: 10
+
 # Будущая интеграция: GitHub Action читает файл и решает что делать.
