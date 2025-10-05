@@ -230,7 +230,7 @@ pre-commit run --all-files
           "run",
           "-i",
           "--rm",
-            "-e",
+          "-e",
           "GITHUB_PERSONAL_ACCESS_TOKEN",
           "ghcr.io/github/github-mcp-server"
         ],
