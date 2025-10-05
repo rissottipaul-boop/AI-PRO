@@ -1,14 +1,5 @@
 {
   "recommendations": [
-    "ms-python.python",
-    "ms-python.vscode-pylance",
-    "ms-python.black-formatter",
-    "charliermarsh.ruff",
-    "ms-python.mypy-type-checker",
-    "github.copilot",
-    "github.copilot-chat",
-    "editorconfig.editorconfig",
-    "yzhang.markdown-all-in-one",
-    "davidanson.vscode-markdownlint"
+
   ]
 }
