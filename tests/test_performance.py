@@ -65,9 +65,9 @@ def test_timed_decorator() -> None:
     result = slow_function()
     assert result == 42
     assert hasattr(slow_function, "_timings")
-    assert len(slow_function._timings) == 1  # type: ignore[attr-defined]
-    assert slow_function._timings[0][0] == "test_function"  # type: ignore[attr-defined]
-    assert slow_function._timings[0][1] > 0  # type: ignore[attr-defined]
+    assert len(slow_function._timings) == 1
+    assert slow_function._timings[0][0] == "test_function"
+    assert slow_function._timings[0][1] > 0
 
 
 def test_timed_decorator_default_name() -> None:
@@ -80,7 +80,7 @@ def test_timed_decorator_default_name() -> None:
     result = my_function()
     assert result == "result"
     assert hasattr(my_function, "_timings")
-    assert my_function._timings[0][0] == "my_function"  # type: ignore[attr-defined]
+    assert my_function._timings[0][0] == "my_function"
 
 
 def test_simple_cache_initialization() -> None:
