@@ -220,9 +220,7 @@ class OptimizationStrategy:
         return item_count >= threshold
 
     @staticmethod
-    def estimate_complexity(
-        n: int, complexity_type: str = "linear"
-    ) -> float:
+    def estimate_complexity(n: int, complexity_type: str = "linear") -> float:
         """Estimate computational complexity.
 
         Args:
