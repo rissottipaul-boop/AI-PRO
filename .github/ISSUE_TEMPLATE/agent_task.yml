@@ -1,0 +1,97 @@
+name: Agent Task
+
+labels: ["agent-task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+
+
+  - type: textarea
+    id: context
+    attributes:
+
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+
+    id: complexity
+    attributes:
+      label: Оценка сложности
+      description: Примерная оценка объёма работы
+      options:
+        - XS (< 1 час, < 50 строк)
+        - S (1-2 часа, 50-200 строк)
+        - M (2-4 часа, 200-500 строк)
+        - L (4-8 часов, 500-1000 строк)
+        - XL (> 8 часов, требует разбиения)
+      default: 2
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: requires_review
+    attributes:
+      label: Требует Human Review?
+      description: |
+        Отметьте, если изменения требуют обязательного ревью человеком
+        (см. automation_policy.yaml для критериев)
+      options:
+        - label: Public API change
+        - label: Major version bump
+        - label: ADR modification
+        - label: Security policy change
+        - label: Breaking change
+
+  - type: textarea
+    id: notes
+    attributes:
+=======
+      label: Additional Notes
+      description: |
+        Дополнительная информация, ссылки, ADR, обсуждения.
+      placeholder: |
+        - См. ARCHITECTURE.md для понимания структуры
+        - Проверьте automation_policy.yaml для правил
+        - Связанные issue: #123, #456
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+
+
+=======
+      label: Agent Checklist
+      description: Проверки для агента перед закрытием задачи
+      options:
+        - label: Код соответствует стандартам (ruff + black + mypy)
+          required: false
+        - label: Тесты добавлены/обновлены
+          required: false
+        - label: Покрытие >= 85%
+          required: false
+        - label: CI проходит успешно
+          required: false
+        - label: Документация обновлена
+          required: false
+        - label: Pre-commit hooks проходят
+          required: false
+
+>

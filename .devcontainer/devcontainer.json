@@ -1,0 +1,58 @@
+{
+    "name": "autonomous-dev",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "remoteUser": "vscode",
+    "workspaceFolder": "/workspace",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest"
+        }
+    },
+    "runArgs": [
+        "--init"
+    ],
+    "containerEnv": {
+        "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+        "PIP_NO_CACHE_DIR": "1"
+    },
+    "postCreateCommand": "pip install -e '.[dev]' && pre-commit install && pre-commit run --all-files || true",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                "ms-azuretools.vscode-docker",
+                "github.vscode-github-actions",
+                "ms-azuretools.vscode-containers"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+                "python.testing.pytestEnabled": true,
+                "python.testing.pytestArgs": [
+                    "-q"
+                ],
+                "python.analysis.typeCheckingMode": "strict",
+                "editor.formatOnSave": true,
+                "ruff.path": [
+                    "ruff"
+                ],
+                "python.linting.enabled": true
+            }
+        }
+    },
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ],
+    "forwardPorts": [],
+    "portsAttributes": {},
+    "hostRequirements": {
+        "cpus": 2,
+        "memory": "4gb"
+    }
+}
