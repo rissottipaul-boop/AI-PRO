@@ -19,9 +19,9 @@ jobs:
                 python-version: ["3.11", "3.12", "3.13"]
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
             - name: Set up Python
-              uses: actions/setup-python@v5
+              uses: actions/setup-python@v6
               with:
                   python-version: ${{ matrix.python-version }}
                   cache: pip
@@ -45,7 +45,7 @@ jobs:
                   python -c "import xml.etree.ElementTree as ET;\nroot=ET.parse('coverage.xml').getroot();\nrate=float(root.get('line-rate',0))*100;\nprint(f'COVERAGE LINE RATE: {rate:.2f}%')"
             - name: Upload coverage to Codecov
               if: ${{ success() && matrix.python-version == '3.11' }}
-              uses: codecov/codecov-action@v4
+              uses: codecov/codecov-action@v5
               with:
                   files: coverage.xml
                   verbose: true
@@ -57,7 +57,7 @@ jobs:
         steps:
 
             - name: Set up Python
-              uses: actions/setup-python@v5
+              uses: actions/setup-python@v6
               with:
                   python-version: 3.11
                   cache: pip
