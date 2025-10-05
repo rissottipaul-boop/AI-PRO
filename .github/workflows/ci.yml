@@ -97,6 +97,6 @@ jobs:
             - name: Bandit
               run: bandit -q -r src/autonomous_dev
             - name: pip-audit
-              run: pip-audit --fail-on HIGH || true
+              run: pip-audit || true
             - name: Deptry
               run: deptry . --ignore DEP002,DEP003
