@@ -1,0 +1,18 @@
+[git]
+conventional_commits = true
+filter_unconventional = true
+tag_pattern = "v*"
+
+[changelog]
+header = "# Changelog\n\nAll notable changes to this project will be documented in this file."
+body = "{{#each releases}}\n## {{title}}\n{{#each commits}}- {{message}} ({{hash_short}})\n{{/each}}\n{{/each}}"
+trim = true
+
+[commit_types]
+feat = { title = "Features" }
+fix = { title = "Bug Fixes" }
+perf = { title = "Performance" }
+refactor = { title = "Refactoring" }
+docs = { title = "Documentation" }
+test = { title = "Tests" }
+chore = { title = "Chores" }
