@@ -51,7 +51,7 @@ All automation infrastructure is **complete and operational**:
 - `gitleaks` - Secret and credential detection (pre-commit + CI)
 - `CodeQL` - Advanced semantic code analysis (scheduled weekly)
 - `bandit` - Static security analysis
-- `pip-audit` - Dependency vulnerability scanning (fails on HIGH)
+- `pip-audit` - Dependency vulnerability scanning
 - `deptry` - Unused/missing dependency detection
 
 
@@ -133,7 +133,7 @@ pre-commit run --all-files
 
 ### Dependency Management
 - **Dependabot:** Weekly automated PR for pip and GitHub Actions
-- **pip-audit:** Fails CI on HIGH severity vulnerabilities
+- **pip-audit:** Scans for dependency vulnerabilities
 - **bandit:** Scans for common security issues
 
 ### Safe Auto-merge Policy

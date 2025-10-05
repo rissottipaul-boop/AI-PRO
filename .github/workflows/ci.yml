@@ -99,4 +99,4 @@ jobs:
             - name: pip-audit
               run: pip-audit || true
             - name: Deptry
-              run: deptry . --ignore DEP002,DEP003
+

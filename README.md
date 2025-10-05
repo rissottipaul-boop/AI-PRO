@@ -16,7 +16,7 @@
 - Pre-commit хуки (ruff, black, mypy, pytest, gitleaks)
 - Тестирование (pytest + coverage, порог 85%)
 - CI (GitHub Actions) — matrix (3.11, 3.12, 3.13) + отдельный security job
-- Security сканы: **gitleaks** (secret detection), bandit, pip-audit (HIGH), deptry, CodeQL
+
 - Automation Policy (`automation_policy.yaml`)
 - Dependabot (pip + actions)
 - Release workflow (build + publish на PyPI по main, требует секрет `PYPI_TOKEN`)
@@ -135,10 +135,7 @@ stats = monitor.get_stats("api_call")
 
 ## Безопасность
 
-- `gitleaks` — автоматическое обнаружение секретов и приватных ключей (pre-commit + CI)
-- `CodeQL` — семантический анализ кода для поиска уязвимостей
-- `bandit` — статический анализ безопасности Python кода
-- `pip-audit --fail-on HIGH` — уязвимости зависимостей
+
 - `deptry` — неиспользуемые/скрытые зависимости
 - Защищённый `.gitignore` для предотвращения коммита секретов
 - Политика безопасности в `SECURITY.md`
