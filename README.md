@@ -13,7 +13,7 @@
 
 - Automation Policy (`automation_policy.yaml`)
 - Dependabot (pip + actions)
-- Release workflow (build + publish на PyPI по main через OIDC, без пароля)
+- Release workflow (build + publish на PyPI по main через OIDC trusted publishing)
 - Makefile и PowerShell скрипт для Windows
 - VSCode задачи и настройки
 - ADR и архитектурная документация
@@ -28,13 +28,6 @@
 - **Кэширование**: оптимизация дорогих вычислений
 - **Батчинг и параллелизация**: эффективная обработка данных
 
-### Автономный AI-агент 🤖
-
-- **Copilot Instructions** (`.github/COPILOT_INSTRUCTIONS.md`) — полный контракт для агента
-- **Structured Tasks** (`.github/ISSUE_TEMPLATE/agent_task.yml`) — шаблон задач для агента
-- **Automation Guide** (`AUTOMATION_GUIDE.md`) — комплексная документация автоматизации
-- Conventional Commits стандарт
-- Чёткие границы разрешённых изменений
 
 ## Быстрый старт
 
@@ -94,20 +87,7 @@ pre-commit run --all-files
 ## Структура
 
 ```text
-src/autonomous_dev/                      # исходный код
-tests/                                   # тесты
-.github/
-  ├── COPILOT_INSTRUCTIONS.md            # Инструкции для AI-агента
-  ├── ISSUE_TEMPLATE/agent_task.yml      # Шаблон задач для агента
-  └── workflows/
-      ├── ci.yml                         # CI pipeline
-      └── release.yml                    # Release pipeline
-automation_policy.yaml                   # Политика автономии
-AUTOMATION_GUIDE.md                      # Гид по автоматизации
-ARCHITECTURE.md                          # Архитектура
-DECISIONS/                               # ADR решения
-roadmap.yaml                             # Дорожная карта
-.devcontainer/                           # Dev Container конфигурация
+
 ```
 
 ## Автономный рабочий цикл AI
@@ -139,11 +119,12 @@ roadmap.yaml                             # Дорожная карта
 
 ## Релизы
 
-Workflow `release.yml` собирает и публикует пакет при изменении `pyproject.toml` в ветке `main` (OIDC Trusted Publishing — `PYPI_TOKEN` не требуется). Убедись, что версия повышена по семантике (semver) перед merge.
+Workflow `release.yml` собирает и публикует пакет при изменении `pyproject.toml` в ветке `main` через OIDC trusted publishing (не требует секретов).
 
 ## Архитектура и ADR
 
 - `ARCHITECTURE.md` — обзор слоёв
+- `AUTOMATION_GUIDE.md` — руководство по инфраструктуре автоматизации
 - `SELF_LEARNING_GUIDE.md` — руководство по саамообучению и оптимизации
 - `DECISIONS/ADR-0001-initial-architecture.md` — начальная архитектура
 - `DECISIONS/ADR-0002-self-learning-performance.md` — система саамообучения

@@ -1,6 +1,5 @@
 name: Agent Task
 
-title: "[AGENT] "
 labels: ["agent-task"]
 body:
   - type: markdown
@@ -30,9 +29,36 @@ body:
       required: true
 
   - type: textarea
-    id: risks
+    id: acceptance
     attributes:
 
+    id: complexity
+    attributes:
+      label: Оценка сложности
+      description: Примерная оценка объёма работы
+      options:
+        - XS (< 1 час, < 50 строк)
+        - S (1-2 часа, 50-200 строк)
+        - M (2-4 часа, 200-500 строк)
+        - L (4-8 часов, 500-1000 строк)
+        - XL (> 8 часов, требует разбиения)
+      default: 2
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: requires_review
+    attributes:
+      label: Требует Human Review?
+      description: |
+        Отметьте, если изменения требуют обязательного ревью человеком
+        (см. automation_policy.yaml для критериев)
+      options:
+        - label: Public API change
+        - label: Major version bump
+        - label: ADR modification
+        - label: Security policy change
+        - label: Breaking change
 
   - type: textarea
     id: notes
@@ -49,6 +75,9 @@ body:
   - type: checkboxes
     id: checklist
     attributes:
+
+
+=======
       label: Agent Checklist
       description: Проверки для агента перед закрытием задачи
       options:
@@ -65,3 +94,4 @@ body:
         - label: Pre-commit hooks проходят
           required: false
 
+>
