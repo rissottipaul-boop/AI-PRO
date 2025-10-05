@@ -232,6 +232,8 @@ All visible in README:
 
 ## 🧠 Self-Learning Features
 
+The system includes comprehensive self-learning and performance optimization capabilities. For detailed documentation, see **[SELF_LEARNING_GUIDE.md](SELF_LEARNING_GUIDE.md)**.
+
 ### Metrics Tracking
 
 The system includes a `MetricsTracker` that records:
@@ -283,6 +285,8 @@ result = cache.get_or_compute("key", lambda: expensive_operation())
 batch = BatchProcessor()
 results = batch.process_items(items, process_function)
 ```
+
+See **[SELF_LEARNING_GUIDE.md](SELF_LEARNING_GUIDE.md)** for comprehensive usage examples, best practices, and advanced topics.
 
 ## 🚀 Next Steps (Optional Enhancements)
 

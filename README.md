@@ -165,6 +165,7 @@ Workflow `release.yml` собирает и публикует пакет при 
 
 - **[Copilot Instructions](.github/copilot-instructions.md)** — полный контракт и гайдлайны
 - **[Automation Guide](AUTOMATION_GUIDE.md)** — инфраструктура автоматизации
+- **[Self-Learning Guide](SELF_LEARNING_GUIDE.md)** — саамообучение и оптимизация производительности
 - **[Agent Task Template](.github/ISSUE_TEMPLATE/agent_task.yml)** — структурированные задачи
 - **[Automation Policy](automation_policy.yaml)** — правила и пороги
 - **[Architecture](ARCHITECTURE.md)** — архитектура системы
