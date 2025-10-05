@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install Dependencies",
+      "type": "shell",
+      "command": "pip install -e .[dev]",
+
+    },
+    {
+      "label": "Run Tests",
+      "type": "shell",
+
+    },
+    {
+      "label": "Run All Checks",
+      "type": "shell",
+
+    }
+  ]
+}

@@ -29,7 +29,7 @@
 
 ### Автономный AI-агент 🤖
 
-- **Copilot Instructions** (`.github/COPILOT_INSTRUCTIONS.md`) — полный контракт для агента
+- **Copilot Instructions** (`.github/copilot-instructions.md`) — полный контракт для агента
 - **Structured Tasks** (`.github/ISSUE_TEMPLATE/agent_task.yml`) — шаблон задач для агента
 - **Automation Guide** (`AUTOMATION_GUIDE.md`) — комплексная документация автоматизации
 - Conventional Commits стандарт
@@ -90,17 +90,62 @@ pre-commit install
 pre-commit run --all-files
 ```
 
+## VSCode Setup
+
+При открытии проекта в VSCode будут автоматически предложены рекомендуемые расширения:
+
+- GitHub Copilot (для AI-ассистируемой разработки)
+- GitHub Copilot Chat
+- Ruff (линтинг и форматирование)
+- Python
+- Pylance (анализ типов)
+
+### Custom Instructions для GitHub Copilot
+
+Проект настроен на использование файла инструкций вместо workspace settings (см. [документацию](https://aka.ms/vscode-ghcp-custom-instructions)).
+
+**Конфигурация в `.vscode/settings.json`:**
+
+```json
+{
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": ".github/COPILOT_INSTRUCTIONS.md"
+    }
+  ]
+}
+```
+
+Все правила разработки, стандарты качества и ограничения описаны в `.github/COPILOT_INSTRUCTIONS.md`. GitHub Copilot автоматически использует эти инструкции при генерации кода.
+
+### Доступные задачи VSCode
+
+Нажмите `Ctrl+Shift+P` (или `Cmd+Shift+P` на macOS) и выберите `Tasks: Run Task`:
+
+- **Install Dependencies** — установка зависимостей
+- **Run Tests** — запуск тестов
+- **Run Tests with Coverage** — тесты с покрытием
+- **Lint** — проверка кода (ruff + mypy)
+- **Format** — форматирование кода
+- **Pre-commit** — запуск pre-commit хуков
+- **Run All Checks** — все проверки (default build task)
+
 ## Структура
 
 ```text
 src/autonomous_dev/                      # исходный код
 tests/                                   # тесты
 .github/
-  ├── COPILOT_INSTRUCTIONS.md            # Инструкции для AI-агента
+  ├── copilot-instructions.md            # Инструкции для AI-агента
   ├── ISSUE_TEMPLATE/agent_task.yml      # Шаблон задач для агента
   └── workflows/
       ├── ci.yml                         # CI pipeline
       └── release.yml                    # Release pipeline
+.vscode/
+  ├── settings.json                      # VSCode настройки (включая Copilot)
+  ├── extensions.json                    # Рекомендуемые расширения
+  ├── tasks.json                         # Задачи для разработки
+  └── launch.json                        # Конфигурация отладки
 automation_policy.yaml                   # Политика автономии
 AUTOMATION_GUIDE.md                      # Гид по автоматизации
 ARCHITECTURE.md                          # Архитектура
@@ -111,7 +156,7 @@ roadmap.yaml                             # Дорожная карта
 
 ## Автономный рабочий цикл AI
 
-См. полную документацию в `.github/COPILOT_INSTRUCTIONS.md` и `AUTOMATION_GUIDE.md`.
+См. полную документацию в `.github/copilot-instructions.md` и `AUTOMATION_GUIDE.md`.
 
 **Краткий цикл:**
 
@@ -160,7 +205,7 @@ Workflow `release.yml` собирает и публикует пакет при 
 
 ## Документация для AI-агентов
 
-- **[Copilot Instructions](.github/COPILOT_INSTRUCTIONS.md)** — полный контракт и гайдлайны
+- **[Copilot Instructions](.github/copilot-instructions.md)** — полный контракт и гайдлайны
 - **[Automation Guide](AUTOMATION_GUIDE.md)** — инфраструктура автоматизации
 - **[Agent Task Template](.github/ISSUE_TEMPLATE/agent_task.yml)** — структурированные задачи
 - **[Automation Policy](automation_policy.yaml)** — правила и пороги
