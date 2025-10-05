@@ -48,11 +48,13 @@ All automation infrastructure is **complete and operational**:
 ### 3. Security Scanning (in CI workflow)
 
 **Automated Checks:**
+- `gitleaks` - Secret and credential detection (pre-commit + CI)
+- `CodeQL` - Advanced semantic code analysis (scheduled weekly)
 - `bandit` - Static security analysis
 - `pip-audit` - Dependency vulnerability scanning (fails on HIGH)
 - `deptry` - Unused/missing dependency detection
 
-### 4. Release Workflow (`.github/workflows/release.yml`)
+
 
 **Triggers:** 
 - Manual dispatch
@@ -97,6 +99,11 @@ pwsh -File scripts/dev.ps1 -All
 ```
 
 ### Pre-commit Hooks
+
+Pre-commit hooks automatically run before each commit:
+- Code formatting (ruff, black)
+- Type checking (mypy)
+- Secret scanning (gitleaks)
 
 ```bash
 # Install hooks
