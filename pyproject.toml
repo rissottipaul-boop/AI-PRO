@@ -51,7 +51,6 @@ target-version = "py311"
 select = ["E", "F", "I", "UP", "B", "SIM", "C4", "TID", "N"]
 ignore = []
 exclude = ["README.md"]
-
 [tool.ruff.lint.isort]
 known-first-party = ["autonomous_dev"]
 

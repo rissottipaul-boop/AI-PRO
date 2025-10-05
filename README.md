@@ -1,12 +1,6 @@
 # autonomous-dev
 
-![CI](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/ci.yml/badge.svg)
-![Nightly](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/nightly.yml/badge.svg)
-![Changelog](https://github.com/rissottipaul-boop/AI-PRO/actions/workflows/changelog.yml/badge.svg)
-![Coverage](https://codecov.io/gh/rissottipaul-boop/AI-PRO/branch/main/graph/badge.svg)
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Python Versions](https://img.shields.io/badge/python-3.11%20|%203.12%20|%203.13-3776AB.svg)
-![SBOM](https://img.shields.io/badge/SBOM-CycloneDX-success.svg)
+
 
 Автономная заготовка репозитория для быстрой AI-ассистируемой разработки.
 
@@ -14,26 +8,26 @@
 
 ### Базовые
 
-- Строгий Python 3.11+ (типизация, mypy strict)
-- Линтинг и автоформат (ruff + black)
-- Pre-commit хуки (ruff, black, mypy)
 - Тестирование (pytest + coverage, порог 85%)
 - CI (GitHub Actions) — matrix (3.11, 3.12, 3.13) + отдельный security job
-- Security сканы: bandit, pip-audit (HIGH), deptry
+
 - Automation Policy (`automation_policy.yaml`)
 - Dependabot (pip + actions)
-- Release workflow (build + publish на PyPI по main через OIDC, без пароля)
+- Release workflow (build + publish на PyPI по main через OIDC trusted publishing)
 - Makefile и PowerShell скрипт для Windows
 - VSCode задачи и настройки
 - ADR и архитектурная документация
+- Политика безопасности (SECURITY.md)
 
-### Автономный AI-агент 🤖
+### Саамообучение и производительность 🚀
+- **Система метрик**: отслеживание и анализ показателей разработки
+- **Анализ трендов**: автоматическое выявление паттернов и проблем
+- **Генерация инсайтов**: предложения по улучшению на основе данных
+- **Циклы обратной связи**: непрерывное улучшение процессов
+- **Профилирование**: мониторинг производительности операций
+- **Кэширование**: оптимизация дорогих вычислений
+- **Батчинг и параллелизация**: эффективная обработка данных
 
-- **Copilot Instructions** (`.github/COPILOT_INSTRUCTIONS.md`) — полный контракт для агента
-- **Structured Tasks** (`.github/ISSUE_TEMPLATE/agent_task.yml`) — шаблон задач для агента
-- **Automation Guide** (`AUTOMATION_GUIDE.md`) — комплексная документация автоматизации
-- Conventional Commits стандарт
-- Чёткие границы разрешённых изменений
 
 ## Быстрый старт
 
@@ -93,36 +87,12 @@ pre-commit run --all-files
 ## Структура
 
 ```text
-src/autonomous_dev/                      # исходный код
-tests/                                   # тесты
-.github/
-  ├── COPILOT_INSTRUCTIONS.md            # Инструкции для AI-агента
-  ├── ISSUE_TEMPLATE/agent_task.yml      # Шаблон задач для агента
-  └── workflows/
-      ├── ci.yml                         # CI pipeline
-      └── release.yml                    # Release pipeline
-automation_policy.yaml                   # Политика автономии
-AUTOMATION_GUIDE.md                      # Гид по автоматизации
-ARCHITECTURE.md                          # Архитектура
-DECISIONS/                               # ADR решения
-roadmap.yaml                             # Дорожная карта
-.devcontainer/                           # Dev Container конфигурация
+
 ```
 
 ## Автономный рабочий цикл AI
 
-См. полную документацию в `.github/COPILOT_INSTRUCTIONS.md` и `AUTOMATION_GUIDE.md`.
 
-**Краткий цикл:**
-
-1. **Plan** — анализ задач из roadmap/issues
-2. **Implement** — минимальные, атомарные изменения
-3. **Validate** — локальные проверки (lint + test)
-4. **Commit** — следуя Conventional Commits
-5. **CI Validation** — GitHub Actions проверяет всё
-6. **Review** — человек только для high-impact
-7. **Merge** — авто или manual (см. `automation_policy.yaml`)
-8. **Release** — автоматический при bump версии
 
 ## Политика автоматизации
 
@@ -135,10 +105,12 @@ roadmap.yaml                             # Дорожная карта
 
 ## Безопасность
 
-- `bandit` — статический анализ
-- `pip-audit --fail-on HIGH` — уязвимости зависимостей
+
 - `deptry` — неиспользуемые/скрытые зависимости
-- Планируемое: SBOM (cyclonedx), SAST расширение
+- ✅ SBOM (CycloneDX) — генерируется в CI для каждого билда
+- Планируемое: расширенный SAST
+
+См. [SECURITY.md](SECURITY.md) для подробной информации о мерах безопасности.
 
 ## Обновления зависимостей
 
@@ -147,12 +119,15 @@ roadmap.yaml                             # Дорожная карта
 
 ## Релизы
 
-Workflow `release.yml` собирает и публикует пакет при изменении `pyproject.toml` в ветке `main` (OIDC Trusted Publishing — `PYPI_TOKEN` не требуется). Убедись, что версия повышена по семантике (semver) перед merge.
+Workflow `release.yml` собирает и публикует пакет при изменении `pyproject.toml` в ветке `main` через OIDC trusted publishing (не требует секретов).
 
 ## Архитектура и ADR
 
 - `ARCHITECTURE.md` — обзор слоёв
-- `DECISIONS/ADR-0001-initial-architecture.md` — фиксация ключевых решений
+- `AUTOMATION_GUIDE.md` — руководство по инфраструктуре автоматизации
+- `SELF_LEARNING_GUIDE.md` — руководство по саамообучению и оптимизации
+- `DECISIONS/ADR-0001-initial-architecture.md` — начальная архитектура
+- `DECISIONS/ADR-0002-self-learning-performance.md` — система саамообучения
 
 ## Дорожная карта
 
@@ -171,8 +146,10 @@ Workflow `release.yml` собирает и публикует пакет при 
 
 - ✅ Devcontainer + Dockerfile
 - ✅ Conventional commits (реализовано)
-- Автогенерация changelog (git-cliff / github-changelog-generator)
-- SBOM + лицензии
+- ✅ Автогенерация changelog (git-cliff реализован)
+- ✅ SBOM (CycloneDX в CI)
+- ✅ Nightly workflow (расширенные проверки)
+- ✅ Version checking (семантическая валидация)
 - ChatOps команды (slash /qa /security)
 - Performance benchmarks
 
@@ -230,7 +207,7 @@ pre-commit run --all-files
           "run",
           "-i",
           "--rm",
-            "-e",
+          "-e",
           "GITHUB_PERSONAL_ACCESS_TOKEN",
           "ghcr.io/github/github-mcp-server"
         ],
