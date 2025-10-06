@@ -16,7 +16,7 @@ dist/
 *.egg-info/
 
 # IDE
-.vscode/
+# .vscode/ - now tracked for team settings
 .idea/
 *.swp
 
@@ -38,5 +38,3 @@ coverage.xml
 
 # Misc
 .DS_Store
-
-

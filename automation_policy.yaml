@@ -37,7 +37,7 @@ self_learning:
   metrics_tracking: true
   feedback_loop: true
   adaptive_thresholds: true
-  
+
 # Performance optimization
 performance:
   enable_caching: true

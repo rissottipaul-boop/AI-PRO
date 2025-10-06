@@ -219,7 +219,7 @@ from autonomous_dev.performance import PerformanceMonitor, SimpleCache
 with PerformanceMonitor("expensive_operation") as monitor:
     # Ваш код
     result = perform_computation()
-    
+
 print(f"Время выполнения: {monitor.get_latest_duration():.2f}s")
 
 # Кэширование

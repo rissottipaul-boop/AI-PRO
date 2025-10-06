@@ -72,5 +72,3 @@ jobs:
             - name: Bandit
               run: bandit -q -r src/autonomous_dev
             - name: pip-audit
-
-
