@@ -2,8 +2,13 @@
 
 from __future__ import annotations
 
+import sys
 import tempfile
 from pathlib import Path
+
+# Добавлено: гарантируем доступность корня проекта для импорта autonomous_dev
+if str(Path(__file__).resolve().parents[1]) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from autonomous_dev.learning import FeedbackLoop, LearningInsight, MetricEntry, MetricsTracker
 
@@ -187,11 +192,7 @@ def test_feedback_loop_suggest_optimizations_refactoring() -> None:
     suggestions = loop.suggest_optimizations({"task_type": "refactoring"})
     assert len(suggestions) > 0
     # Should include refactoring-specific suggestion
-    assert any(
-        "refactoring" in str(s["description"]).lower()
-        for s in suggestions
-
-    )
+    assert any("refactoring" in str(s["description"]).lower() for s in suggestions)
 
 
 def test_feedback_loop_high_confidence_suggestions() -> None:
@@ -206,3 +207,4 @@ def test_feedback_loop_high_confidence_suggestions() -> None:
     suggestions = loop.suggest_optimizations({})
     # All suggestions should have high confidence
     for suggestion in suggestions:
+        assert float(suggestion.get("priority", 0)) >= 0.7

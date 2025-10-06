@@ -29,7 +29,10 @@
                 "charliermarsh.ruff",
                 "ms-azuretools.vscode-docker",
                 "github.vscode-github-actions",
-                "ms-azuretools.vscode-containers"
+                "ms-azuretools.vscode-containers",
+                "EditorConfig.EditorConfig",
+                "ryanluker.vscode-coverage-gutters",
+                "streetsidesoftware.code-spell-checker"
             ],
             "settings": {
                 "python.defaultInterpreterPath": "/workspace/.venv/bin/python",

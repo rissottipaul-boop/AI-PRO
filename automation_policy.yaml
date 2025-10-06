@@ -1,3 +1,4 @@
+---
 version: 1
 policies:
   coverage_min: 85
@@ -37,7 +38,7 @@ self_learning:
   metrics_tracking: true
   feedback_loop: true
   adaptive_thresholds: true
-  
+
 # Performance optimization
 performance:
   enable_caching: true
@@ -45,5 +46,4 @@ performance:
   enable_profiling: true
   batch_size: 100
   parallelization_threshold: 10
-
 # Будущая интеграция: GitHub Action читает файл и решает что делать.

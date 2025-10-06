@@ -1,47 +1,55 @@
 name: Agent Task
-
-labels: ["agent-task"]
+description: Шаблон задачи для автономного агента
+labels:
+  - agent-task
 body:
   - type: markdown
     attributes:
       value: |
-
+        Заполните поля для постановки задачи агенту. Указывайте чёткие критерии приемки.
 
   - type: textarea
     id: context
     attributes:
-
+      label: Контекст
+      description: Предпосылки, ссылки, связанные issue / ADR
+      placeholder: Кратко опишите зачем и что требует изменения
     validations:
       required: true
 
   - type: textarea
     id: scope
     attributes:
-
+      label: Scope
+      description: Что входит и что явно исключено
+      placeholder: |
+        Включено: ...
+        Исключено: ...
     validations:
       required: true
 
   - type: textarea
     id: acceptance
     attributes:
-
+      label: Acceptance Criteria
+      description: Условия успешного завершения задачи
+      placeholder: |
+        - [ ] Поведение X
+        - [ ] Тесты покрывают крайние случаи
+        - [ ] Документация обновлена
     validations:
       required: true
 
-  - type: textarea
-    id: acceptance
-    attributes:
-
+  - type: dropdown
     id: complexity
     attributes:
       label: Оценка сложности
-      description: Примерная оценка объёма работы
       options:
-        - XS (< 1 час, < 50 строк)
-        - S (1-2 часа, 50-200 строк)
-        - M (2-4 часа, 200-500 строк)
-        - L (4-8 часов, 500-1000 строк)
-        - XL (> 8 часов, требует разбиения)
+        - XS (<1h / <50 LOC)
+        - S (1-2h / 50-200 LOC)
+        - M (2-4h / 200-500 LOC)
+        - L (4-8h / 500-1000 LOC)
+        - XL (>8h / требует разбиения)
       default: 2
     validations:
       required: true
@@ -51,8 +59,7 @@ body:
     attributes:
       label: Требует Human Review?
       description: |
-        Отметьте, если изменения требуют обязательного ревью человеком
-        (см. automation_policy.yaml для критериев)
+        Отметьте, если изменения требуют обязательного ревью человеком (см. automation_policy.yaml)
       options:
         - label: Public API change
         - label: Major version bump
@@ -63,35 +70,22 @@ body:
   - type: textarea
     id: notes
     attributes:
-=======
-      label: Additional Notes
-      description: |
-        Дополнительная информация, ссылки, ADR, обсуждения.
+      label: Дополнительные заметки
+      description: ADR, ссылки, обсуждения
       placeholder: |
-        - См. ARCHITECTURE.md для понимания структуры
-        - Проверьте automation_policy.yaml для правил
-        - Связанные issue: #123, #456
+        - См. ARCHITECTURE.md
+        - См. automation_policy.yaml
+        - Связанные issue: #123
 
   - type: checkboxes
     id: checklist
     attributes:
-
-
-=======
       label: Agent Checklist
-      description: Проверки для агента перед закрытием задачи
+      description: Проверки перед закрытием задачи
       options:
         - label: Код соответствует стандартам (ruff + black + mypy)
-          required: false
         - label: Тесты добавлены/обновлены
-          required: false
         - label: Покрытие >= 85%
-          required: false
         - label: CI проходит успешно
-          required: false
         - label: Документация обновлена
-          required: false
         - label: Pre-commit hooks проходят
-          required: false
-
->

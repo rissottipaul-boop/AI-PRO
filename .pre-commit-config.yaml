@@ -24,3 +24,30 @@ repos:
       rev: v8.28.0
       hooks:
           - id: gitleaks
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v5.0.0
+      hooks:
+          - id: end-of-file-fixer
+          - id: trailing-whitespace
+          - id: mixed-line-ending
+          - id: detect-private-key
+          - id: check-yaml
+          - id: check-json
+    - repo: https://github.com/codespell-project/codespell
+      rev: v2.3.0
+      hooks:
+          - id: codespell
+            additional_dependencies: []
+            args: ["--ignore-words-list=teh,ba", "--skip=*.lock,*.svg,.git/"]
+    - repo: https://github.com/commitizen-tools/commitizen
+      rev: v4.9.1
+      hooks:
+          - id: commitizen
+            stages: [commit-msg]
+    # yamllint repo удалён из-за UnicodeDecodeError в Windows (cp1251).
+    # CI качества YAML обеспечивается hook'ом check-yaml и будущим отдельным workflow.
+
+ci:
+    autofix_prs: true
+    autofix_commit_msg: "chore(pre-commit): auto fixes"
+    skip: []

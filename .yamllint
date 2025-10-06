@@ -1,0 +1,21 @@
+extends: default
+
+yaml-files:
+  - '*.yml'
+  - '*.yaml'
+
+rules:
+  truthy: disable          # GitHub Actions 'on:' triggers
+  document-start: disable  # Не требуем ---
+  line-length:
+    max: 140
+    level: warning
+  new-lines:
+    type: unix
+  octal-values: disable
+  indentation:
+    indent-sequences: consistent
+  trailing-spaces: enable
+
+ignore: |
+  # (Пока пусто; можно добавить пути если появятся генераторы)
