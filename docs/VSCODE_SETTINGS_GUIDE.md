@@ -402,11 +402,14 @@ Add to `.vscode/tasks.json`:
 - Shared with team
 - Committed to repository
 
-**User Settings** (`~/.config/Code/User/settings.json`):
+**User Settings**:
 - Personal preferences
 - Not committed
 - Apply to all projects
 
+  - **Linux:** `~/.config/Code/User/settings.json`
+  - **Windows:** `%APPDATA%\Code\User\settings.json`
+  - **macOS:** `~/Library/Application Support/Code/User/settings.json`
 ---
 
 ## Keyboard Shortcuts Reference
