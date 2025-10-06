@@ -274,9 +274,9 @@ import pstats
 def profile_code():
     profiler = cProfile.Profile()
     profiler.enable()
-    
+
     # Your code here
-    
+
     profiler.disable()
     stats = pstats.Stats(profiler)
     stats.sort_stats('cumulative')
@@ -326,7 +326,7 @@ def collect_ci_metrics():
     start = time.time()
     run_tests()
     duration = time.time() - start
-    
+
     tracker.record_metric("test_duration", duration, {"ci": True})
     tracker.record_metric("coverage", get_coverage(), {"ci": True})
 ```
@@ -377,13 +377,13 @@ Insights are prioritized based on:
     python -c "
     from autonomous_dev.learning import MetricsTracker
     import time
-    
+
     tracker = MetricsTracker(storage_path='metrics.json')
-    
+
     start = time.time()
     # Run tests
     duration = time.time() - start
-    
+
     tracker.record_metric('test_duration', duration, {'ci': True})
     "
 ```
@@ -394,7 +394,7 @@ Insights are prioritized based on:
 - name: Generate insights
   run: |
     python scripts/generate_insights.py
-  
+
 - name: Upload metrics artifact
   uses: actions/upload-artifact@v4
   with:
@@ -451,6 +451,6 @@ predicted_duration = predictor.predict_test_duration(
 
 ---
 
-**Status:** ✅ Implemented and tested  
-**Coverage:** 100%  
+**Status:** ✅ Implemented and tested
+**Coverage:** 100%
 **Last Updated:** 2025-10-04
