@@ -34,6 +34,13 @@ A complete set of workspace settings has been added to the `.vscode/` directory:
 - ✅ Insert final newline (fixes EOF issues)
 - ✅ Consistent line endings (LF)
 
+**Auto-Fix Capabilities:**
+- ✅ Real-time auto-fix on save
+- ✅ One-click "Auto-Fix All Problems" task
+- ✅ Comprehensive auto-fix script
+- ✅ Pre-commit auto-fix hooks
+- ✅ Enhanced VS Code quick fix settings
+
 #### b) tasks.json
 13 predefined tasks for common operations:
 - Install Dependencies
@@ -83,6 +90,17 @@ Complete guide covering:
 - **Best Practices**: Do's and don'ts for Git automation and settings
 - **Troubleshooting**: Solutions for common issues
 - **Additional Resources**: Links to official documentation
+
+#### docs/AUTO_FIX_GUIDE.md (11 KB) - NEW!
+Comprehensive auto-fix documentation:
+- **Real-time Auto-Fix**: On-save fixes for formatting, imports, whitespace
+- **Manual Auto-Fix Tasks**: One-click comprehensive problem resolution
+- **Pre-commit Auto-Fix**: Automatic fixes before committing
+- **Auto-Fix Script**: Comprehensive automated problem resolution
+- **Problem Types**: Complete list of auto-fixed issues
+- **Workflow Examples**: Step-by-step usage scenarios
+- **Keyboard Shortcuts**: Quick reference for common actions
+- **Troubleshooting**: Solutions for auto-fix issues
 
 ### 3. Enhanced Pre-commit Configuration
 
@@ -269,11 +287,13 @@ git commit -m "your message"
 ## Files Modified
 
 ### New Files
-- `.vscode/settings.json` - Workspace settings
-- `.vscode/tasks.json` - Task definitions
+- `.vscode/settings.json` - Workspace settings (enhanced with auto-fix)
+- `.vscode/tasks.json` - Task definitions (added auto-fix tasks)
 - `.vscode/extensions.json` - Extension recommendations
 - `.vscode/launch.json` - Debug configurations
-- `.vscode/README.md` - Quick reference
+- `.vscode/README.md` - Quick reference (updated)
+- `scripts/autofix.py` - Comprehensive auto-fix script (NEW!)
+- `docs/AUTO_FIX_GUIDE.md` - Complete auto-fix documentation (NEW!)
 - `docs/VSCODE_SETTINGS_GUIDE.md` - Comprehensive guide
 - `docs/GIT_VSCODE_AUTOMATION_SUMMARY.md` - This file
 

@@ -161,6 +161,32 @@
             "problemMatcher": []
         },
         {
+            "label": "Auto-Fix All Problems",
+            "type": "shell",
+            "command": "python scripts/autofix.py",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Fix All Issues (Comprehensive)",
+            "type": "shell",
+            "command": "ruff check . --fix && ruff format . && black . && pre-commit run --all-files || true",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "Full CI Check",
             "type": "shell",
             "command": "ruff check . --fix && ruff format . && black . && mypy src && pytest --cov=src/autonomous_dev --cov-report=term-missing",
