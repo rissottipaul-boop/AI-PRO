@@ -16,7 +16,7 @@ dist/
 *.egg-info/
 
 # IDE
-.vscode/
+# .vscode/ is tracked for workspace automation
 .idea/
 *.swp
 

@@ -1,0 +1,126 @@
+{
+    // ===========================
+    // Git Automation Settings
+    // ===========================
+    "git.autofetch": true,
+    "git.autofetchPeriod": 180,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.pruneOnFetch": true,
+    "git.pullTags": true,
+    "git.postCommitCommand": "sync",
+    "git.fetchOnPull": true,
+    "git.rebaseWhenSync": false,
+    "git.allowForcePush": false,
+    "git.showPushSuccessNotification": true,
+
+    // ===========================
+    // Python Settings
+    // ===========================
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+
+    // ===========================
+    // Ruff (Linting & Formatting)
+    // ===========================
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        }
+    },
+
+    // ===========================
+    // Editor Settings
+    // ===========================
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "editor.rulers": [100],
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.trimAutoWhitespace": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.suggest.preview": true,
+    "editor.inlineSuggest.enabled": true,
+
+    // ===========================
+    // File Settings
+    // ===========================
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.eol": "\n",
+    "files.encoding": "utf8",
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/.pytest_cache": true,
+        "**/.mypy_cache": true,
+        "**/.ruff_cache": true,
+        "**/.coverage": true,
+        "**/htmlcov": true,
+        "**/.DS_Store": true
+    },
+
+    // ===========================
+    // Testing
+    // ===========================
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestArgs": [
+        "-v",
+        "--cov=src/autonomous_dev",
+        "--cov-report=term-missing"
+    ],
+
+    // ===========================
+    // Terminal
+    // ===========================
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    },
+
+    // ===========================
+    // Auto-Fix Settings
+    // ===========================
+    "ruff.enable": true,
+    "ruff.organizeImports": true,
+    "ruff.fixAll": true,
+    "ruff.lint.run": "onSave",
+
+    // ===========================
+    // Type Checking
+    // ===========================
+    "mypy-type-checker.args": [
+        "--config-file=${workspaceFolder}/pyproject.toml"
+    ],
+
+    // ===========================
+    // Search & Files
+    // ===========================
+    "search.exclude": {
+        "**/.venv": true,
+        "**/venv": true,
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/.pytest_cache": true,
+        "**/.mypy_cache": true,
+        "**/.ruff_cache": true,
+        "**/.coverage": true,
+        "**/htmlcov": true,
+        "**/node_modules": true,
+        "**/.git": true
+    }
+}
