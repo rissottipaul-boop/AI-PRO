@@ -89,7 +89,7 @@
         {
             "label": "Clean Cache Files",
             "type": "shell",
-            "command": "find . -type d -name '__pycache__' -o -name '.pytest_cache' -o -name '.mypy_cache' -o -name '.ruff_cache' | xargs rm -rf",
+            "command": "find . -type d \\( -name '__pycache__' -o -name '.pytest_cache' -o -name '.mypy_cache' -o -name '.ruff_cache' \\) -exec rm -rf {} +",
             "windows": {
                 "command": "powershell",
                 "args": ["-Command", "Get-ChildItem -Path . -Include __pycache__,.pytest_cache,.mypy_cache,.ruff_cache -Recurse -Force | Remove-Item -Recurse -Force"]
