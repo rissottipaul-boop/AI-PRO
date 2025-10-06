@@ -24,7 +24,15 @@ This directory contains shared VS Code settings for the autonomous-dev project.
    - ✅ Pytest integration
    - ✅ Type checking with mypy
 
-3. **Useful Shortcuts:**
+3. **Auto-Fix Capabilities:**
+   - ✅ Format on save (automatic)
+   - ✅ Fix linting issues (automatic)
+   - ✅ Organize imports (automatic)
+   - ✅ Trim trailing whitespace (automatic)
+   - ✅ Add final newlines (automatic)
+   - ✅ One-click fix-all via tasks
+
+4. **Useful Shortcuts:**
    - `Ctrl+Shift+B` - Run Full CI Check (default build)
    - `Ctrl+Shift+T` - Run Tests (default test)
    - `F5` - Start debugging
@@ -55,6 +63,8 @@ Run common tasks via Command Palette or keyboard shortcuts:
 
 | Task | Description | Shortcut |
 |------|-------------|----------|
+| **Auto-Fix All Problems** | Fix all issues comprehensively | - |
+| **Fix All Issues (Comprehensive)** | Quick fix all with pre-commit | - |
 | Full CI Check | Lint + format + type check + test | `Ctrl+Shift+B` |
 | Run Tests | Execute pytest with coverage | `Ctrl+Shift+T` |
 | Pre-commit Run All | Validate all files | - |
@@ -65,7 +75,9 @@ Run common tasks via Command Palette or keyboard shortcuts:
 ## Documentation
 
 For detailed documentation, see:
+- [Auto-Fix Guide](../docs/AUTO_FIX_GUIDE.md) - Complete guide to auto-fix capabilities
 - [VS Code Settings Guide](../docs/VSCODE_SETTINGS_GUIDE.md) - Complete guide to settings and recovery
+- [Git & VS Code Automation](../docs/GIT_VSCODE_AUTOMATION_SUMMARY.md) - Implementation summary
 
 ## Troubleshooting
 

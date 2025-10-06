@@ -95,6 +95,26 @@
     "editor.insertSpaces": true,
     "editor.detectIndentation": false,
 
+    // Auto-fix and Quick Fix Settings
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.snippetSuggestions": "top",
+    "editor.wordBasedSuggestions": "matchingDocuments",
+    "problems.decorations.enabled": true,
+    "problems.showCurrentInStatus": true,
+
+    // Python Auto-fix and Diagnostics
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.fixAll": ["source.unusedImports"],
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+
     // GitHub Copilot
     "github.copilot.enable": {
         "*": true,
