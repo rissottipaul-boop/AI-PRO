@@ -43,7 +43,7 @@ jobs:
             - name: Run tests with coverage
               run: pytest --cov=src/autonomous_dev --cov-report=xml
             - name: Save coverage artifact
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v5
               with:
                   name: nightly-coverage
                   path: coverage.xml
