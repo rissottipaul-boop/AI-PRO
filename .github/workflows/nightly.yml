@@ -12,7 +12,7 @@ jobs:
     extended-security:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - uses: actions/setup-python@v6
               with:
                   python-version: "3.11"
@@ -32,7 +32,7 @@ jobs:
         runs-on: ubuntu-latest
         needs: extended-security
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - uses: actions/setup-python@v6
               with:
                   python-version: "3.11"
@@ -43,7 +43,7 @@ jobs:
             - name: Run tests with coverage
               run: pytest --cov=src/autonomous_dev --cov-report=xml
             - name: Save coverage artifact
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v5
               with:
                   name: nightly-coverage
                   path: coverage.xml
